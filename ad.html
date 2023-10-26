@@ -1,0 +1,279 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Advertising on DEV</title>
+</head>
+
+<body>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <div x-data="{ 'showModal': false }" @keydown.escape="showModal = false">
+    <!-- hero section -->
+    <section class="">
+      <div class="container max-w-screen-xl mx-auto px-4">
+
+        <div class="flex-col xl:flex-row flex justify-between items-center">
+          <div class="mx-auto text-center xl:text-left xl:mx-0 mb-10 xl:mb-0 xl:ml-16">
+            <h1 class="font-bold text-gray-700 text-3xl md:text-6xl leading-tight mb-10">
+              Reach millions of <br> developers on DEV
+            </h1>
+
+            <p class="font-normal text-gray-500 text-sm md:text-lg mb-10">
+              Reach a focused developer audience. Simple, effective advertising starting at $5,000. </p>
+
+            <div class="flex items-center justify-center xl:justify-start">
+              <button @click="showModal = true"
+                class="px-8 py-3 bg-[3b49df] hover:bg-[1c29ba] font-medium text-white text-md md:text-lg rounded-md transition ease-in-out duration-300">Get
+                in touch</a>
+            </div>
+          </div>
+
+          <div class="mx-auto xl:mx-0">
+            <img class="w-[500px]" src="https://canary1.forem.lol/remoteimages/uploads/articles/lrl46dnbgek3qwfzthfb.png
+          " alt="Image">
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- companies -->
+    <section class="p-8 md:p-10">
+      <div class="container max-w-screen-xl mx-auto px-4">
+        <p class="font-semibold text-gray-700 text-xl md:text-2xl text-center mb-5">
+          Trusted by
+        </p>
+
+        <div
+          class="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 ml-4 md:ml-20 xl:ml-0 mb-10 items-center	content-evenly justify-items-center">
+          <img src="https://canary1.forem.lol/remoteimages/uploads/articles/fhrcv6usrrofrn4scyqy.png" alt="Cloudinary"
+            class="mb-5 md:mb-5 xl:mb-0">
+
+          <img src="https://canary1.forem.lol/remoteimages/uploads/articles/iynsz3li857x5ujzpi91.png" alt="OVHcloud"
+            class="mb-5 md:mb-0">
+
+          <img src="https://canary1.forem.lol/remoteimages/uploads/articles/r8gdraxjpsuihcltv0d0.png" alt="Sentry"
+            class="mb-5 md:mb-5 xl:mb-0">
+
+          <img src="https://canary1.forem.lol/remoteimages/uploads/articles/kuqofjq8526k5pts7f6a.png" alt="Algolia"
+            class="mb-5 md:mb-0">
+        </div>
+      </div>
+    </section>
+
+    <!-- feature section -->
+    <section class="p-8 md:p-16">
+      <div class="container max-w-screen-xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+          <div class="text-center mb-10 xl:mb-0">
+            <div class="flex items-center justify-center">
+              <div class="w-32 h-32 py-7 flex justify-center bg-blue-100 rounded-lg mb-5 md:mb-10">
+                <img alt="Members icon"
+                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTcuOTk3IDE4aC0uOTk4YzAtMS41NTIuMDYtMS43NzUtLjg4LTEuOTkzLTEuNDM4LS4zMzItMi43OTctLjY0NS0zLjI5My0xLjcyOS0uMTgtLjM5Ni0uMzAxLTEuMDQ4LjE1NS0xLjkwNyAxLjAyMS0xLjkyOSAxLjI3Ny0zLjU4My43MDItNC41MzgtLjY3Mi0xLjExNS0yLjcwNy0xLjEyLTMuMzg1LjAxNy0uNTc2Ljk2OC0uMzE2IDIuNjEzLjcxMyA0LjUxMi40NjUuODU2LjM0OCAxLjUxLjE2OCAxLjkwOC0uNDkgMS4wODktMS44MzYgMS40LTMuMjYyIDEuNzI4LS45ODIuMjI3LS45Mi40MzUtLjkyIDIuMDAyaC0uOTk1bC0uMDAyLS42MjNjMC0xLjI1OS4xLTEuOTg1IDEuNTg4LTIuMzI5IDEuNjgyLS4zODkgMy4zNDQtLjczNiAyLjU0NS0yLjIwOS0yLjM2Ni00LjM2NS0uNjc2LTYuODM5IDEuODY1LTYuODM5IDIuNDkyIDAgNC4yMjcgMi4zODMgMS44NjcgNi44MzktLjc3NSAxLjQ2NC44MjQgMS44MTIgMi41NDUgMi4yMDkgMS40OS4zNDQgMS41ODkgMS4wNzIgMS41ODkgMi4zMzNsLS4wMDIuNjE5em00LjgxLTIuMjE0Yy0xLjI4OS0uMjk4LTIuNDg5LS41NTktMS45MDgtMS42NTcgMS43Ny0zLjM0Mi40Ny01LjEyOS0xLjQtNS4xMjktMS4yNjUgMC0yLjI0OC44MTctMi4yNDggMi4zMjUgMCAxLjI2OS41NzQgMi4xNzUuOTA0IDIuOTI1aDEuMDQ4Yy0uMTctLjc1LTEuNDY2LTIuNTYyLS43NjYtMy43MzYuNDEyLS42OTIgMS43MDQtLjY5MyAyLjExNC0uMDEyLjM4LjYzMS4xODEgMS44MTItLjUzNCAzLjE2MS0uMzg4LjczMy0uMjggMS4zMDEtLjEyMSAxLjY0OC4zMDUuNjY2Ljk3Ny45ODcgMS43MzcgMS4yMDggMS41MDcuNDQxIDEuMzY4LjA0MiAxLjM2OCAxLjQ4aC45OTdsLjAwMi0uNDYzYzAtLjk0NS0uMDc0LTEuNDkyLTEuMTkzLTEuNzV6bS0yMi44MDUgMi4yMTRoLjk5N2MwLTEuNDM4LS4xMzktMS4wMzkgMS4zNjgtMS40OC43NjEtLjIyMSAxLjQzMy0uNTQyIDEuNzM3LTEuMjA4LjE1OS0uMzQ4LjI2Ny0uOTE1LS4xMjEtMS42NDgtLjcxNS0xLjM0OS0uOTE0LTIuNTMtLjUzNC0zLjE2MS40MS0uNjgyIDEuNzAyLS42ODEgMi4xMTQuMDEyLjcgMS4xNzUtLjU5NiAyLjk4Ni0uNzY2IDMuNzM2aDEuMDQ4Yy4zMy0uNzUuOTA0LTEuNjU2LjkwNC0yLjkyNS4wMDEtMS41MDktLjk4Mi0yLjMyNi0yLjI0Ny0yLjMyNi0xLjg3IDAtMy4xNyAxLjc4Ny0xLjQgNS4xMjkuNTgxIDEuMDk5LS42MTkgMS4zNTktMS45MDggMS42NTctMS4xMi4yNTgtMS4xOTQuODA1LTEuMTk0IDEuNzUxbC4wMDIuNDYzeiIvPjwvc3ZnPg==" />
+              </div>
+            </div>
+
+            <h2 class="font-semibold text-gray-700 text-xl md:text-3xl mb-5 px-5">
+              Over 1 million registered members
+            </h2>
+
+            <p class="font-normal text-gray-400 text-sm md:text-lg">
+              Excepteur sint occaecat cupidatat non <br>
+              proident, sunt in culpa qui officia deserunt <br>
+              mollit anim id est laborum.
+            </p>
+          </div>
+
+          <div class="text-center mb-10 md:mb-0">
+            <div class="flex items-center justify-center">
+              <div class="w-32 h-32 py-7 flex justify-center bg-green-100 rounded-lg mb-5 md:mb-10">
+                <img alt="A line graph going up"
+                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgMy44NzVsLTYgMS4yMjEgMS43MTYgMS43MDgtNS4zNTEgNS4zNTgtMy4wMDEtMy4wMDItNy4zMzYgNy4yNDIgMS40MSAxLjQxOCA1LjkyMi01LjgzNCAyLjk5MSAyLjk5MyA2Ljc4MS02Ljc2MiAxLjY2NyAxLjY2IDEuMjAxLTYuMDAyem0wIDE3LjEyNXYyaC0yNHYtMjJoMnYyMGgyMnoiLz48L3N2Zz4=" />
+              </div>
+            </div>
+
+            <h2 class="font-semibold text-gray-700 text-xl md:text-3xl mb-5 px-5">
+              Millions monthly pageviews
+            </h2>
+
+            <p class="font-normal text-gray-400 text-sm md:text-lg">
+              Excepteur sint occaecat cupidatat non <br>
+              proident, sunt in culpa qui officia deserunt <br>
+              mollit anim id est laborum.
+            </p>
+          </div>
+
+          <div class="text-center">
+            <div class="flex items-center justify-center">
+              <div class="w-32 h-32 py-7 flex justify-center bg-yellow-100 rounded-lg mb-5 md:mb-10">
+                <img alt="Unlocked padlock representing open source"
+                  src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xMSAxMHYtNGMwLTIuNzYtMi4yNC01LTUtNXMtNSAyLjI0LTUgNXYyaC0xdi0yYzAtMy4zMTIgMi42ODktNiA2LTZzNiAyLjY4OSA2IDZ2NGgxMHYxNGgtMTh2LTE0aDd6bTEwIDFoLTE2djEyaDE2di0xMnoiLz48L3N2Zz4=" />
+              </div>
+            </div>
+
+            <h2 class="font-semibold text-gray-700 text-xl md:text-3xl mb-5 px-5">
+              Huge open source community
+            </h2>
+
+            <p class="font-normal text-gray-400 text-sm md:text-lg">
+              Excepteur sint occaecat cupidatat non <br>
+              proident, sunt in culpa qui officia deserunt <br>
+              mollit anim id est laborum.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- portfolio -->
+    <section class="p-8 md:p-16">
+      <div class="container max-w-screen-xl mx-auto px-4">
+        <h1 class="font-semibold text-gray-700 text-3xl md:text-4xl text-center mb-5">
+          Features
+        </h1>
+
+        <p class="font-normal text-gray-500 text-md md:text-lg text-center mb-20">
+          Our contextual, native ads are shown alongside relevant content, ensuring you're reaching the right audience.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 xl:gap-10">
+          <div class="space-y-2 xl:space-y-4">
+            <h2>Transparent</h2>
+            <p class="font-normal text-gray-400 text-base">
+              Forem is open source, allowing you to inspect the underlying mechanics of our system. Gain confidence in
+              how
+              it works.
+            </p>
+          </div>
+
+          <div class="space-y-2 xl:space-y-4">
+            <h2>Privacy-Focused (No Track)</h2>
+            <p class="font-normal text-gray-400 text-base">
+              We serve our own billboards directly, without tracking your web activity. Advertisers have limited
+              visibility into users, but can use UTM links.
+            </p>
+          </div>
+
+          <div class="space-y-2 xl:space-y-4">
+            <h2>Opt-in/Opt-out</h2>
+            <p class="font-normal text-gray-400 text-base">
+              Registered members can choose to opt out of viewing promoted billboards and disable them alongside their
+              published content, without any paywall restrictions.
+            </p>
+          </div>
+
+          <div class="space-y-2 xl:space-y-4">
+            <h2>Value-add</h2>
+            <p class="font-normal text-gray-400 text-base">
+              Our team manually approves all billboards to ensure they meet our standards and add value to the
+              ecosystem.
+            </p>
+          </div>
+
+          <div class="space-y-2 xl:space-y-4">
+            <h2>Budget-friendly</h2>
+            <p class="font-normal text-gray-400 text-base">
+              Get started for $5,000, and tailor your campaign needs from there.
+            </p>
+          </div>
+
+          <div class="space-y-2 xl:space-y-4">
+            <h2>Flexible</h2>
+            <p class="font-normal text-gray-400 text-base">
+              Enjoy dynamic freedom in crafting compelling messages with billboards that aren't limited to specific
+              sizes
+              and form factors.
+            </p>
+          </div>
+
+          <div class="space-y-2 xl:space-y-4">
+            <h2>Contextual</h2>
+            <p class="font-normal text-gray-400 text-base">
+              Target billboards by tag to display ads alongside relevant content.
+            </p>
+          </div>
+
+          <div class="space-y-2 xl:space-y-4">
+            <h2>Broadly Targeted</h2>
+            <p class="font-normal text-gray-400 text-base">
+              Leverage aggregated targeting buckets, such as experience level and geographic location, to reach a wider
+              audience.
+            </p>
+          </div>
+
+          <div class="space-y-2 xl:space-y-4">
+            <h2>Optimized</h2>
+            <p class="font-normal text-gray-400 text-base">
+              Only pay when your billboard is visible to users. Our system automatically optimizes for the
+              best-performing
+              variants.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="p-8 md:p-16">
+      <div class="container max-w-screen-xl mx-auto px-4">
+
+        <div class="flex flex-wrap md:flex-nowrap justify-between mb-8">
+          <div>
+            <p class="font-normal text-gray-500 text-md md:text-lg uppercase mb-3">
+              Get in touch
+            </p>
+
+            <h1 class="font-bold text-gray-700 text-xl md:text-4xl">
+              Want to find out more?
+            </h1>
+          </div>
+
+          <div class="mt-10">
+            <button @click="showModal = true"
+              class="px-8 py-3 bg-[3b49df] hover:bg-[1c29ba] font-medium text-white text-md md:text-lg rounded-md transition ease-in-out duration-300">Get
+              in touch</a>
+          </div>
+        </div>
+
+        <hr class="text-gray-300 mb-8">
+
+        <p class="font-normal text-gray-500 text-md md:text-lg mb-4 md:mb-10">
+          We'd love to hear about your advertising needs whatever size you're at and how we can help you further reach
+          your target audience on DEV.
+        </p>
+      </div>
+    </section>
+    <!-- Modal -->
+    <div class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50"
+      x-show="showModal">
+      <!-- Modal inner -->
+      <div class="w-full md:w-1/2 xl:w-1/3 px-6 py-4 mx-auto text-left bg-white rounded shadow-lg"
+        @click.away="showModal = false" x-transition:enter="motion-safe:ease-out duration-300"
+        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
+        <!-- Title / Close-->
+        <div class="flex items-center justify-between">
+          <button type="button" class="z-50 cursor-pointer" @click="showModal = false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- content -->
+        <iframe frameborder="0" onmousewheel="" width="100%" height="600"
+          src="https://airtable.com/embed/appOfPGukXi0VycZX/shrRHEqL80waDV7tk?backgroundColor=redDusty&amp;prefill_ref=null&amp;hide_ref=true&amp;prefill_page=sparse&amp;hide_page=true"
+          style="background: transparent; border: 1px solid rgb(204, 204, 204); border-radius: 12px;"></iframe>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
