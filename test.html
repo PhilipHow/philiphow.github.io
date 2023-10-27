@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<!-- saved from url=(0112)https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf -->
+<html lang="en" class="js-focus-visible" data-js-focus-visible=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community</title>
+      <meta name="last-updated" content="2023-10-27 14:34:27 UTC">
+      <meta name="user-signed-in" content="true">
+      <meta name="head-cached-at" content="1698417267">
+        <!-- Experimental web monetization payment pointer for micropayments -->
+        <!-- It lets readers make micropayments to websites they visit. -->
+        <!-- This is step 1: Get live in production to test for platform-wide payment pointer. -->
+        <!-- Step 2: Allow authors to set their payment pointer so they can directly monetize their content based on visitors. -->
+        <!-- Step 3: Enable further functionality based on what we learn from this experimentation and how the ecosystem evolves. -->
+        <meta name="monetization" content="$ilp.uphold.com/24HhrUGG7ekn">
+      <meta name="environment" content="production">
+      <link rel="stylesheet" href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/minimal-ce2284f1c9b04ffc034a5682b214006dda88306116e7a895eb23278e96ed1309.css" media="all" id="main-minimal-stylesheet">
+<link rel="stylesheet" href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/views-b907f8120ea7d1917d7944d3b143e08b50dab5c29d611ef5bdcfb492922927f0.css" media="all" id="main-views-stylesheet">
+<link rel="stylesheet" href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/crayons-bd6e121f335b025f510da15ed195d98f012aea4dc40fe0b66b387e4474f5be7f.css" media="all" id="main-crayons-stylesheet">
+
+      <script async="" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/analytics.js.download"></script><script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/base-5510d5e205c3f22669a6e6c9d9c47f0770827ddaf34d01db4ddd0d6d7f267610.js.download" defer="defer"></script>
+        <script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~base-220e45ff1458429f02fb.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/base-f92510208ac79d0bf0f5.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~baseInitializers-ab35cf6b652fab331674.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/baseInitializers-37ac616b12f2c877503a.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~Search-44b1637788d4365b9f67.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/0-6a8935ca6bc68cd25de7.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/1-4d21e783d0ae28288869.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/Search-a26e3fcd15d4369e1ef3.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~runtimeBanner-8b3e3883b8eb58f989fb.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtimeBanner-1d7c094641449b017147.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~onboardingRedirectCheck-b09fcd1e2779cd0af985.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/onboardingRedirectCheck-fb05e4ecb0622f704dad.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~contentDisplayPolicy-de72e34b71f1d756e48e.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/contentDisplayPolicy-146d5d57c3ce45d9f61b.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~baseTracking-0e19fe5d7159285c6fab.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/baseTracking-f53ebd72375020aee44b.chunk.js.download" defer="defer"></script>
+      
+    <link rel="canonical" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf">
+    <meta name="description" content="Welcome to this step-by-step tutorial on how to install and set up a Ghost blog on AWS Lightsail.... Tagged with aws, devops, beginners, tutorial.">
+    <meta name="keywords" content="aws, devops, beginners, tutorial, software, coding, development, engineering, inclusive, community">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf">
+    <meta property="og:title" content="How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial">
+    <meta property="og:description" content="Welcome to this step-by-step tutorial on how to install and set up a Ghost blog on AWS Lightsail....">
+    <meta property="og:site_name" content="DEV Community">
+    <meta name="twitter:site" content="@thepracticaldev">
+    <meta name="twitter:creator" content="@DevarshiShimpi">
+    <meta name="twitter:title" content="How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial">
+    <meta name="twitter:description" content="Welcome to this step-by-step tutorial on how to install and set up a Ghost blog on AWS Lightsail....">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:widgets:new-embed-design" content="on">
+    <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+      <meta property="og:image" content="https://res.cloudinary.com/practicaldev/image/fetch/s--axAYVpFi--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/by375g5il2dr6rasmza3.png">
+      <meta name="twitter:image:src" content="https://res.cloudinary.com/practicaldev/image/fetch/s--axAYVpFi--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/by375g5il2dr6rasmza3.png">
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+      <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/practicaldev/image/fetch/s--E8ak4Hr1--/c_limit,f_auto,fl_progressive,q_auto,w_32/https://dev-to.s3.us-east-2.amazonaws.com/favicon.ico">
+      <link rel="apple-touch-icon" href="https://res.cloudinary.com/practicaldev/image/fetch/s--eWZ6RXEZ--/c_limit,f_png,fl_progressive,q_80,w_180/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="152x152" href="https://res.cloudinary.com/practicaldev/image/fetch/s--4NZquTNJ--/c_limit,f_png,fl_progressive,q_80,w_152/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/practicaldev/image/fetch/s--eWZ6RXEZ--/c_limit,f_png,fl_progressive,q_80,w_180/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8j7kvp660rqzt99zui8e.png">
+      <link rel="apple-touch-icon" sizes="167x167" href="https://res.cloudinary.com/practicaldev/image/fetch/s--2M4UHURL--/c_limit,f_png,fl_progressive,q_80,w_167/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8j7kvp660rqzt99zui8e.png">
+      <link href="https://res.cloudinary.com/practicaldev/image/fetch/s--b551aYX---/c_limit,f_png,fl_progressive,q_80,w_192/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8j7kvp660rqzt99zui8e.png" rel="icon" sizes="192x192">
+      <link href="https://res.cloudinary.com/practicaldev/image/fetch/s--NWcX-tD4--/c_limit,f_png,fl_progressive,q_80,w_128/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8j7kvp660rqzt99zui8e.png" rel="icon" sizes="128x128">
+      <meta name="apple-mobile-web-app-title" content="dev.to">
+      <meta name="application-name" content="dev.to">
+      <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+      <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+      <link rel="search" href="https://dev.to/open-search.xml" type="application/opensearchdescription+xml" title="DEV Community">
+
+      <meta property="forem:name" content="DEV Community">
+      <meta property="forem:logo" content="https://res.cloudinary.com/practicaldev/image/fetch/s--BlMrNwoZ--/c_limit,f_png,fl_progressive,q_80,w_512/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8j7kvp660rqzt99zui8e.png">
+      <meta property="forem:domain" content="dev.to">
+  <style>.fluidvids-elem{position:absolute;top:0px;left:0px;width:100%;height:100%;border:none;}.fluidvids{width:100%;position:relative;}</style><script charset="utf-8" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/203-cf35b891791135918dc7.chunk.js.download"></script><script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/js" async=""></script><meta name="csrf-param" content="authenticity_token"><meta name="csrf-token" content="4zQaJ48GBtTSnobFYPBD2dPIPsI7zmwlpviTZeg6OYeA2zap_ibJVCub9ywPStO7ueIZVPJNWgB3WiEB_chfFQ"><script charset="utf-8" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/196-28c75158163db01f60b1.chunk.js.download"></script><script charset="utf-8" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/198-cfa7ddb1859b20c02dfa.chunk.js.download"></script></head>
+      <body class="light-theme sans-serif-article-body mod-status-true trusted-status-true default-header user-tags-followed-max vsc-initialized" data-user-status="logged-in" data-community-name="DEV Community" data-locale="en" data-honeybadger-key="hbp_nqu4Y66HuEKlD6YRGssZuRQnPOjDm50J8Zkr" data-deployed-at="2023-10-26T19:51:30Z" data-latest-commit-id="b68a8b253caddf03c6192c85a6478a1233ac79de" data-ga-tracking="UA-71991109-1" data-ga4-tracking-id="G-TYEM8Y3JN3" data-user="{&quot;id&quot;:1044258,&quot;name&quot;:&quot;Philip How&quot;,&quot;username&quot;:&quot;philiphow&quot;,&quot;profile_image_90&quot;:&quot;https://res.cloudinary.com/practicaldev/image/fetch/s--SRgOLAnR--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/1044258/1a5336f8-6a40-4892-983c-db335dc2a465.png&quot;,&quot;followed_tags&quot;:&quot;[{\&quot;bg_color_hex\&quot;:\&quot;#f7df1e\&quot;,\&quot;hotness_score\&quot;:25493784,\&quot;id\&quot;:6,\&quot;name\&quot;:\&quot;javascript\&quot;,\&quot;points\&quot;:3.6390573296152584,\&quot;text_color_hex\&quot;:\&quot;#000000\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#890606\&quot;,\&quot;hotness_score\&quot;:16633082,\&quot;id\&quot;:33,\&quot;name\&quot;:\&quot;programming\&quot;,\&quot;points\&quot;:3.3469043464563955,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#26BE00\&quot;,\&quot;hotness_score\&quot;:2014764,\&quot;id\&quot;:228,\&quot;name\&quot;:\&quot;opensource\&quot;,\&quot;points\&quot;:4.218875824868201,\&quot;text_color_hex\&quot;:\&quot;#FFFFFF\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#06B500\&quot;,\&quot;hotness_score\&quot;:1532868,\&quot;id\&quot;:168,\&quot;name\&quot;:\&quot;devops\&quot;,\&quot;points\&quot;:1.1732800857894952,\&quot;text_color_hex\&quot;:\&quot;#FFFFFF\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#2A0798\&quot;,\&quot;hotness_score\&quot;:1494402,\&quot;id\&quot;:112,\&quot;name\&quot;:\&quot;productivity\&quot;,\&quot;points\&quot;:3.2799662595272676,\&quot;text_color_hex\&quot;:\&quot;#C8F7C5\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#71EA8B\&quot;,\&quot;hotness_score\&quot;:1433262,\&quot;id\&quot;:715,\&quot;name\&quot;:\&quot;discuss\&quot;,\&quot;points\&quot;:4.260174314884535,\&quot;text_color_hex\&quot;:\&quot;#FFFFFF\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#212b3a\&quot;,\&quot;hotness_score\&quot;:1237320,\&quot;id\&quot;:397,\&quot;name\&quot;:\&quot;aws\&quot;,\&quot;points\&quot;:3.633889197080166,\&quot;text_color_hex\&quot;:\&quot;#FAAF34\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#3d8836\&quot;,\&quot;hotness_score\&quot;:801091,\&quot;id\&quot;:15,\&quot;name\&quot;:\&quot;node\&quot;,\&quot;points\&quot;:3.3773310568515864,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#2965F1\&quot;,\&quot;hotness_score\&quot;:800773,\&quot;id\&quot;:23,\&quot;name\&quot;:\&quot;css\&quot;,\&quot;points\&quot;:3.633889197080166,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#2d2a2a\&quot;,\&quot;hotness_score\&quot;:771331,\&quot;id\&quot;:307,\&quot;name\&quot;:\&quot;ai\&quot;,\&quot;points\&quot;:0.7847167237347998,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#234A84\&quot;,\&quot;hotness_score\&quot;:707190,\&quot;id\&quot;:169,\&quot;name\&quot;:\&quot;typescript\&quot;,\&quot;points\&quot;:3.3097844357145547,\&quot;text_color_hex\&quot;:\&quot;#FFFFFF\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#111111\&quot;,\&quot;hotness_score\&quot;:667204,\&quot;id\&quot;:44,\&quot;name\&quot;:\&quot;news\&quot;,\&quot;points\&quot;:3.4479590478331072,\&quot;text_color_hex\&quot;:\&quot;#fff9ac\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#2A2566\&quot;,\&quot;hotness_score\&quot;:567947,\&quot;id\&quot;:630,\&quot;name\&quot;:\&quot;career\&quot;,\&quot;points\&quot;:3.995732273553991,\&quot;text_color_hex\&quot;:\&quot;#FFFFFF\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#F53900\&quot;,\&quot;hotness_score\&quot;:553745,\&quot;id\&quot;:57,\&quot;name\&quot;:\&quot;html\&quot;,\&quot;points\&quot;:3.8144481906372123,\&quot;text_color_hex\&quot;:\&quot;#FFFFFF\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#019b65\&quot;,\&quot;hotness_score\&quot;:491938,\&quot;id\&quot;:203,\&quot;name\&quot;:\&quot;testing\&quot;,\&quot;points\&quot;:0.7690223892601038,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#8f13fc\&quot;,\&quot;hotness_score\&quot;:421578,\&quot;id\&quot;:165,\&quot;name\&quot;:\&quot;codenewbie\&quot;,\&quot;points\&quot;:4.401197381662156,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#9725ea\&quot;,\&quot;hotness_score\&quot;:407482,\&quot;id\&quot;:154,\&quot;name\&quot;:\&quot;api\&quot;,\&quot;points\&quot;:3.638224923446027,\&quot;text_color_hex\&quot;:null},{\&quot;bg_color_hex\&quot;:\&quot;#ED1556\&quot;,\&quot;hotness_score\&quot;:388685,\&quot;id\&quot;:439,\&quot;name\&quot;:\&quot;database\&quot;,\&quot;points\&quot;:0.8170728068875467,\&quot;text_color_hex\&quot;:\&quot;#FFFFFF\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#000000\&quot;,\&quot;hotness_score\&quot;:333519,\&quot;id\&quot;:342,\&quot;name\&quot;:\&quot;github\&quot;,\&quot;points\&quot;:3.9159697527381248,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#ff33e0\&quot;,\&quot;hotness_score\&quot;:322976,\&quot;id\&quot;:245,\&quot;name\&quot;:\&quot;frontend\&quot;,\&quot;points\&quot;:0.8507630225817854,\&quot;text_color_hex\&quot;:null},{\&quot;bg_color_hex\&quot;:\&quot;#56a036\&quot;,\&quot;hotness_score\&quot;:311886,\&quot;id\&quot;:316,\&quot;name\&quot;:\&quot;android\&quot;,\&quot;points\&quot;:0.7237977205924956,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#1bac80\&quot;,\&quot;hotness_score\&quot;:279153,\&quot;id\&quot;:56,\&quot;name\&quot;:\&quot;security\&quot;,\&quot;points\&quot;:0.8337477621301497,\&quot;text_color_hex\&quot;:\&quot;#23ff00\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#FF9900\&quot;,\&quot;hotness_score\&quot;:275043,\&quot;id\&quot;:465,\&quot;name\&quot;:\&quot;cloud\&quot;,\&quot;points\&quot;:0.7690223892601038,\&quot;text_color_hex\&quot;:\&quot;#232F3E\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#73c7e6\&quot;,\&quot;hotness_score\&quot;:230137,\&quot;id\&quot;:31,\&quot;name\&quot;:\&quot;docker\&quot;,\&quot;points\&quot;:3.5960986983008185,\&quot;text_color_hex\&quot;:\&quot;#134871\&quot;},{\&quot;bg_color_hex\&quot;:null,\&quot;hotness_score\&quot;:191437,\&quot;id\&quot;:62,\&quot;name\&quot;:\&quot;development\&quot;,\&quot;points\&quot;:4.637586159726386,\&quot;text_color_hex\&quot;:null},{\&quot;bg_color_hex\&quot;:\&quot;#000000\&quot;,\&quot;hotness_score\&quot;:168878,\&quot;id\&quot;:891,\&quot;name\&quot;:\&quot;nextjs\&quot;,\&quot;points\&quot;:4.503199827731024,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#000000\&quot;,\&quot;hotness_score\&quot;:144117,\&quot;id\&quot;:118,\&quot;name\&quot;:\&quot;linux\&quot;,\&quot;points\&quot;:0.8007313507497957,\&quot;text_color_hex\&quot;:\&quot;#4FF14F\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#512ad5\&quot;,\&quot;hotness_score\&quot;:116064,\&quot;id\&quot;:718,\&quot;name\&quot;:\&quot;dotnet\&quot;,\&quot;points\&quot;:0.9039207967999998,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#ebdf37\&quot;,\&quot;hotness_score\&quot;:69718,\&quot;id\&quot;:714,\&quot;name\&quot;:\&quot;architecture\&quot;,\&quot;points\&quot;:0.8858423808639998,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#e3ff00\&quot;,\&quot;hotness_score\&quot;:56666,\&quot;id\&quot;:5999,\&quot;name\&quot;:\&quot;cybersecurity\&quot;,\&quot;points\&quot;:0.9223681599999999,\&quot;text_color_hex\&quot;:\&quot;#00e600\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#D0ECFF\&quot;,\&quot;hotness_score\&quot;:55109,\&quot;id\&quot;:26303,\&quot;name\&quot;:\&quot;watercooler\&quot;,\&quot;points\&quot;:5.06771014070302,\&quot;text_color_hex\&quot;:\&quot;#130074\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#d4a174\&quot;,\&quot;hotness_score\&quot;:53426,\&quot;id\&quot;:2,\&quot;name\&quot;:\&quot;rust\&quot;,\&quot;points\&quot;:5.030916279646322,\&quot;text_color_hex\&quot;:\&quot;#000000\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#ffa364\&quot;,\&quot;hotness_score\&quot;:49350,\&quot;id\&quot;:677,\&quot;name\&quot;:\&quot;performance\&quot;,\&quot;points\&quot;:0.8507630225817854,\&quot;text_color_hex\&quot;:\&quot;#000000\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#091b47\&quot;,\&quot;hotness_score\&quot;:47768,\&quot;id\&quot;:223,\&quot;name\&quot;:\&quot;showdev\&quot;,\&quot;points\&quot;:4.736525337668443,\&quot;text_color_hex\&quot;:\&quot;#b2ffe1\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#f79600\&quot;,\&quot;hotness_score\&quot;:41015,\&quot;id\&quot;:219,\&quot;name\&quot;:\&quot;community\&quot;,\&quot;points\&quot;:0.9603999999999999,\&quot;text_color_hex\&quot;:null},{\&quot;bg_color_hex\&quot;:\&quot;#d98cd9\&quot;,\&quot;hotness_score\&quot;:38038,\&quot;id\&quot;:2118,\&quot;name\&quot;:\&quot;computerscience\&quot;,\&quot;points\&quot;:0.9603999999999999,\&quot;text_color_hex\&quot;:\&quot;#323232\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#000000\&quot;,\&quot;hotness_score\&quot;:33053,\&quot;id\&quot;:5594,\&quot;name\&quot;:\&quot;tailwindcss\&quot;,\&quot;points\&quot;:5.100169429333296,\&quot;text_color_hex\&quot;:\&quot;#c2fbff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#3ca5ea\&quot;,\&quot;hotness_score\&quot;:32404,\&quot;id\&quot;:303,\&quot;name\&quot;:\&quot;vscode\&quot;,\&quot;points\&quot;:0.9223681599999999,\&quot;text_color_hex\&quot;:\&quot;#8cb8ff\&quot;},{\&quot;bg_color_hex\&quot;:null,\&quot;hotness_score\&quot;:22445,\&quot;id\&quot;:598,\&quot;name\&quot;:\&quot;backend\&quot;,\&quot;points\&quot;:0.9223681599999999,\&quot;text_color_hex\&quot;:null},{\&quot;bg_color_hex\&quot;:\&quot;#000000\&quot;,\&quot;hotness_score\&quot;:21403,\&quot;id\&quot;:172495,\&quot;name\&quot;:\&quot;hacktoberfest23\&quot;,\&quot;points\&quot;:6.049856007249537,\&quot;text_color_hex\&quot;:null},{\&quot;bg_color_hex\&quot;:\&quot;#cdcd00\&quot;,\&quot;hotness_score\&quot;:15335,\&quot;id\&quot;:54400,\&quot;name\&quot;:\&quot;braziliandevs\&quot;,\&quot;points\&quot;:0.9223681599999999,\&quot;text_color_hex\&quot;:\&quot;#008000\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#000000\&quot;,\&quot;hotness_score\&quot;:3015,\&quot;id\&quot;:275,\&quot;name\&quot;:\&quot;meta\&quot;,\&quot;points\&quot;:6.159055299214529,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#ff3e00\&quot;,\&quot;hotness_score\&quot;:2483,\&quot;id\&quot;:4912,\&quot;name\&quot;:\&quot;svelte\&quot;,\&quot;points\&quot;:0.9411919999999999,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#3C9559\&quot;,\&quot;hotness_score\&quot;:1279,\&quot;id\&quot;:4803,\&quot;name\&quot;:\&quot;sre\&quot;,\&quot;points\&quot;:0.8681255332467198,\&quot;text_color_hex\&quot;:\&quot;#FFFFFF\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#16b886\&quot;,\&quot;hotness_score\&quot;:602,\&quot;id\&quot;:13225,\&quot;name\&quot;:\&quot;healthydebate\&quot;,\&quot;points\&quot;:0.8337477621301497,\&quot;text_color_hex\&quot;:\&quot;#ffffff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#DF3F3D\&quot;,\&quot;hotness_score\&quot;:0,\&quot;id\&quot;:9,\&quot;name\&quot;:\&quot;scala\&quot;,\&quot;points\&quot;:0.8507630225817854,\&quot;text_color_hex\&quot;:\&quot;#fff\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#31788c\&quot;,\&quot;hotness_score\&quot;:0,\&quot;id\&quot;:3,\&quot;name\&quot;:\&quot;elm\&quot;,\&quot;points\&quot;:0.9223681599999999,\&quot;text_color_hex\&quot;:\&quot;#ffcf55\&quot;},{\&quot;bg_color_hex\&quot;:\&quot;#f9f1db\&quot;,\&quot;hotness_score\&quot;:0,\&quot;id\&quot;:4722,\&quot;name\&quot;:\&quot;changelog\&quot;,\&quot;points\&quot;:0.98,\&quot;text_color_hex\&quot;:\&quot;#666666\&quot;}]&quot;,&quot;followed_podcast_ids&quot;:[],&quot;reading_list_ids&quot;:[1466874,1463593],&quot;blocked_user_ids&quot;:[],&quot;saw_onboarding&quot;:true,&quot;checked_code_of_conduct&quot;:true,&quot;checked_terms_and_conditions&quot;:true,&quot;display_sponsors&quot;:true,&quot;display_announcements&quot;:true,&quot;trusted&quot;:true,&quot;moderator_for_tags&quot;:[],&quot;config_body_class&quot;:&quot;light-theme sans-serif-article-body mod-status-true trusted-status-true default-header&quot;,&quot;feed_style&quot;:&quot;basic&quot;,&quot;created_at&quot;:&quot;2023-03-13T11:35:07.327Z&quot;,&quot;admin&quot;:true,&quot;policies&quot;:[{&quot;dom_class&quot;:&quot;js-policy-article-create&quot;,&quot;visible&quot;:true},{&quot;dom_class&quot;:&quot;js-policy-article-moderate&quot;,&quot;visible&quot;:true}],&quot;apple_auth&quot;:false}" data-runtime="Browser-Windows" data-loaded="true" data-creator="false" data-new-gr-c-s-check-loaded="14.1135.0" data-gr-ext-installed="">
+        <link rel="stylesheet" href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/minimal-ce2284f1c9b04ffc034a5682b214006dda88306116e7a895eb23278e96ed1309.css" media="all" id="secondary-minimal-stylesheet">
+<link rel="stylesheet" href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/views-b907f8120ea7d1917d7944d3b143e08b50dab5c29d611ef5bdcfb492922927f0.css" media="all" id="secondary-views-stylesheet">
+<link rel="stylesheet" href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/crayons-bd6e121f335b025f510da15ed195d98f012aea4dc40fe0b66b387e4474f5be7f.css" media="all" id="secondary-crayons-stylesheet">
+
+        <div id="body-styles">
+          <style>
+            :root {
+              --accent-brand-lighter-rgb: 80, 99, 301;
+              --accent-brand-rgb: 59, 73, 223;
+              --accent-brand-darker-rgb: 47, 58, 178;
+            }
+          </style>
+        </div>
+          <script>
+  try {
+    const bodyClass = localStorage.getItem('config_body_class');
+    const userString = localStorage.getItem('current_user');
+
+    if (bodyClass) {
+      document.body.className = bodyClass;
+
+      if (bodyClass.includes('dark-theme')) {
+        document.getElementById('body-styles').innerHTML = '<style>:root{color-scheme:dark;--theme-secondary-color: #cedae2;--theme-container-background: #141f2d;--theme-container-accent-background: #202c3d;--theme-container-background-hover: #1c2c3f;--theme-container-box-shadow: none;--theme-container-border: 1px solid #22303f;--theme-social-icon-invert: invert(100%);--theme-color: #ffffff;--base: #f9f9f9;--base-inverted: #000;--base-100: var(--base);--base-90: #efefef;--base-80: #d6d6d7;--base-70: #bdbdbd;--base-60: #a3a3a3;--base-50: #8a8a8a;--base-40: #717171;--base-30: #575757;--base-20: #3d3d3d;--base-10: #242424;--base-0: #090909;--accent-brand-lighter: rgb(var(--indigo-400));--accent-brand: rgb(var(--indigo-500));--accent-brand-darker: rgb(var(--indigo-600));--accent-success: rgb(var(--green-600));--accent-success-darker: rgb(var(--green-700));--accent-success-lighter: rgb(var(--green-500));--accent-success-a10: rgba(var(--green-600), 0.2);--accent-warning: rgb(var(--yellow-500));--accent-warning-darker: rgb(var(--yellow-600));--accent-warning-lighter: rgb(var(--yellow-400));--accent-warning-a10: rgba(var(--yellow-500), 0.2);--accent-danger: rgb(var(--red-600));--accent-danger-darker: rgb(var(--red-700));--accent-danger-lighter: rgb(var(--red-500));--accent-danger-a10: rgba(var(--red-600), 0.2);--body-bg: rgb(var(--black));--body-color: rgb(var(--grey-50));--body-color-inverted: rgb(var(--black));--card-bg: rgb(var(--grey-900));--card-color: rgb(var(--grey-50));--card-color-secondary: rgb(var(--grey-300));--card-color-tertiary: rgb(var(--grey-400));--card-secondary-bg: rgb(var(--grey-900));--card-secondary-color: rgb(var(--grey-200));--card-tertiary-bg: rgb(var(--grey-800));--card-tertiary-bg-hover: rgba(var(--grey-800), 0.9);--card-border: rgba(var(--white), 0.15);--card-secondary-border: rgba(var(--white), 0.1);--header-bg: rgb(var(--grey-900));--header-shadow: rgb(var(--black));--footer-bg: rgb(var(--grey-900));--footer-color: rgb(var(--grey-400));--link-bg-hover-alt: rgba(var(--base-inverted));--link-color-current: var(--base-100);--link-color-secondary: var(--base-70);--link-color-secondary-hover: var(--base-80);--link-bg-current: var(--card-bg);--button-primary-bg: var(--accent-brand-darker);--button-primary-bg-hover: var(--accent-brand);--button-primary-color: rgb(var(--white));--button-primary-color-hover: rgb(var(--white));--button-primary-inverted-bg: var(--accent-brand);--button-primary-inverted-bg-hover: var(--accent-brand-lighter);--button-primary-inverted-color: var(--base-0);--button-primary-inverted-color-hover: var(--base-0);--button-secondary-bg: var(--base-20);--button-secondary-bg-hover: var(--base-30);--button-secondary-color: var(--base-80);--button-secondary-color-hover: var(--base-100);--button-outlined-bg: transparent;--button-outlined-bg-hover: rgba(255, 255, 255, 0.035);--button-outlined-border: var(--base-20);--button-outlined-border-hover: var(--base-30);--button-outlined-color: var(--base-80);--button-outlined-color-hover: var(--base-100);--button-ghost-bg: transparent;--button-ghost-bg-hover: rgba(255, 255, 255, 0.035);--button-ghost-color: var(--base-80);--button-ghost-color-hover: var(--base-100);--button-ghost-dimmed-color: var(--base-60);--button-ghost-dimmed-color-hover: var(--base-100);--button-ghost-inverted-bg: transparent;--button-ghost-inverted-bg-hover: rgba(0, 0, 0, 0.1);--button-ghost-inverted-color: var(--base-30);--button-ghost-inverted-color-hover: var(--base-10);--form-bg: rgb(var(--black));--form-bg-focus: rgb(var(--black));--form-border: rgb(var(--grey-700));--form-border-hover: rgb(var(--grey-600));--form-border-focus: var(--focus);--form-placeholder-color: rgb(var(--grey-600));--label-primary: rgb(var(--grey-50));--label-secondary: rgb(var(--grey-30));--snackbar-bg: rgb(var(--grey-50));--snackbar-color: rgb(var(--grey-900));--tab-color: rgb(var(--grey-100));--tab-color-hover: var(--accent-brand-lighter);--tab-color-current: rgb(var(--grey-50));--tab-bg-hover: rgba(var(--accent-brand-rgb), 0.2);--tab-bg-current: rgb(var(--accent-brand));--tag-color: rgb(var(--grey-300));--tag-color-hover: rgb(var(--grey-100));--tag-bg: rgba(var(--grey-50), 0.05);--tag-bg-hover: rgba(var(--grey-50), 0.05);--tag-prefix: rgba(var(--grey-50), 0.6);--tag-prefix-hover: rgb(var(--grey-50));--tag-onboarding-bg: var(--grey-900);--tag-onboarding-border: var(--grey-700);--story-comments-bg: rgb(var(--grey-800));--story-comments-bg-top: rgba(var(--grey-800), 0);--story-comments-bg-bottom: rgba(var(--grey-800), 1);--select-icon: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDE2TDYgMTBIMThMMTIgMTZaIiBmaWxsPSIjYzJjNmNhIi8+Cjwvc3ZnPg==);--reaction-like-color: rgb(var(--red-500));--reaction-like-bg: rgba(var(--red-500), 0.1);--reaction-custom-color: rgb(var(--green-600));--reaction-custom-bg: rgb(var(--green-600), 0.1);--reaction-save-color: rgb(var(--indigo-500));--reaction-save-bg: rgba(var(--indigo-500), 0.1);--reaction-comment-color: rgb(var(--yellow-500));--reaction-comment-bg: rgba(var(--yellow-500), 0.1);--code-inline-bg: rgb(var(--white), 0.1);--content-row-hover-bg: rgba(var(--base-20))}:root{--btn-bg: transparent;--btn-bg-hover: rgba(var(--indigo-900), 0.75);--btn-color: rgb(var(--grey-300));--btn-color-hover: rgb(var(--indigo-300));--btn-current-bg: rgb(var(--grey-700));--btn-current-color: rgb(var(--grey-50));--btn-primary-bg: rgb(var(--indigo-700));--btn-primary-bg-hover: rgb(var(--indigo-600));--btn-primary-color: rgba(var(--white), 0.9);--btn-primary-color-hover: rgb(var(--white));--btn-secondary-bg: rgba(var(--indigo-600), 0.4);--btn-secondary-bg-hover: rgb(var(--indigo-700));--btn-secondary-color: rgb(var(--indigo-200));--btn-secondary-color-hover: rgb(var(--white));--btn-destructive-bg: transparent;--btn-destructive-bg-hover: rgba(var(--red-500), 0.3);--btn-destructive-color: rgb(var(--red-400));--btn-destructive-color-hover: rgb(var(--red-300));--btn-primary-destructive-bg: rgb(var(--red-700));--btn-primary-destructive-bg-hover: rgb(var(--red-600));--btn-primary-destructive-color: rgb(var(--white));--btn-primary-destructive-color-hover: rgb(var(--white));--link-bg: transparent;--link-bg-hover: rgba(var(--indigo-900), 0.75);--link-color: rgb(var(--grey-300));--link-color-hover: rgb(var(--indigo-300));--link-current-bg: rgb(var(--grey-700));--link-current-color: rgb(var(--grey-50));--link-branded-bg: transparent;--link-branded-bg-hover: rgba(var(--indigo-900), 0.75);--link-branded-color: rgb(var(--indigo-400));--link-branded-color-hover: rgb(var(--indigo-300));--cta-bg: transparent;--cta-bg-hover: rgba(var(--indigo-900), 0.75);--cta-color: rgb(var(--grey-300));--cta-color-hover: rgb(var(--indigo-300));--cta-border: rgb(var(--grey-500));--cta-border-hover: rgb(var(--indigo-400));--cta-branded-bg: transparent;--cta-branded-bg-hover: rgb(var(--indigo-600));--cta-branded-color: rgb(var(--indigo-400));--cta-branded-color-hover: rgb(var(--white));--cta-branded-border: rgb(var(--indigo-400));--cta-branded-border-hover: rgb(var(--indigo-500));--tooltip-bg: rgba(var(--white), 0.9);--tooltip-color: rgb(var(--grey-800));--indicator-bg: rgb(var(--grey-600));--indicator-color: rgb(var(--grey-200));--indicator-success-bg: rgb(var(--green-700));--indicator-success-color: rgb(var(--green-50));--indicator-warning-bg: rgb(var(--yellow-400));--indicator-warning-color: rgb(var(--yellow-900));--indicator-danger-bg: rgb(var(--red-700));--indicator-danger-color: rgb(var(--red-50));--indicator-info-bg: rgb(var(--indigo-700));--indicator-info-color: rgb(var(--indigo-100));--list-item-bg-hover: rgb(var(--grey-800));--checkbox-default-bg: rgb(var(--grey-800));--modal-bg: rgb(var(--grey-900));--modal-backdrop: rgba(var(--black), 0.6);--modal-danger-border-color: rgb(var(--red-400));--color-primary: rgb(var(--grey-50));--color-secondary: rgb(var(--grey-400));--pill-bg: transparent;--pill-bg-hover: rgb(var(--grey-800));--pill-color: rgb(var(--grey-200));--pill-color-hover: rgb(var(--grey-50));--pill-border: rgb(var(--grey-500));--pill-border-hover: rgb(var(--grey-200));--swatch-border-color: rgb(var(--white), 0.2);--toggle-rail-bg: rgb(var(--grey-700));--toggle-rail-checked-bg: rgb(var(--green-500));--toggle-knob-bg: rgb(var(--white));--selected-date-color: var(--body-color);--selected-range-color: var(--body-color-inverted);--tag-item-bg-hover: rgba(var(--indigo-900), 0.5);--subtract-color: rgb(var(--red-200));--subtract-color-hover: rgb(var(--white));--subtract-bg: rgba(var(--red-600), 0.4);--subtract-bg-hover: rgb(var(--red-600));--plus-color: rgb(var(--green-200));--plus-color-hover: rgb(var(--white));--plus-bg: rgba(var(--green-600), 0.4);--plus-bg-hover: rgb(var(--green-600));--tag-hash: rgb(var(--grey-500));--tag-name: rgb(var(--grey-50));--add-tag-hash: rgb(var(--grey-200));--focus: var(--accent-brand-lighter);--divider: rgb(var(--grey-700));--shadow-1: 0 10px 15px -3px rgba(var(--black), 0.5), 0 4px 6px -2px rgba(var(--black), 0.25), inset 0 0 0 1px rgba(var(--white), 0.1);--shadow-2: 0 20px 25px -5px rgba(var(--black), 0.5), 0 10px 10px -5px rgba(var(--black), 0.25), inset 0 0 0 1px rgba(var(--white), 0.1);--shadow-smooth: 0px 8px 16px rgba(0, 0, 0, 0.06)}</style>';
+      }
+
+      if (bodyClass.includes('open-dyslexic-article-body')) { // Preloading custom font for anticipated use
+        const link = document.createElement('link');
+        link.as = 'font'
+        link.rel = 'preload'
+        crossorigin = 'anonymous'
+        link.href = 'https://dev.to/assets/OpenDyslexic-Regular-cf8f24aa1c9b34b36bb160bb1e3eb6f6e6ab6ec3b43ba558afee2c1c202753ca.otf';
+        document.head.appendChild(link);
+      }
+    }
+    if (navigator.userAgent === 'DEV-Native-ios') {
+      document.body.classList.add("dev-ios-native-body");
+    }
+    if (window.frameElement) { // Hide top bar and footer when loaded within iframe
+      document.body.classList.add("hidden-shell");
+    }
+    if (userString && userString.length > 0) {
+      const user = JSON.parse(userString)
+      const numTags = JSON.parse(user.followed_tags).length
+      if (numTags < 6) {
+        document.body.classList.add("user-tags-followed-" + numTags);
+      } else {
+        document.body.classList.add("user-tags-followed-max");
+      }
+    }
+  } catch (e) {
+    setTimeout(function () {
+      Honeybadger.notify(e);
+    }, 1000)
+  }
+</script>
+
+        <div id="audiocontent" data-podcast="">
+          
+        </div>
+        <div class="navigation-progress" id="navigation-progress"></div>
+<header id="topbar" class="crayons-header topbar print-hidden">
+  <span id="route-change-target" tabindex="-1"></span>
+  <a href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#main-content" class="skip-content-link">Skip to content</a>
+  <div class="crayons-header__container">
+    <span class="inline-block m:hidden ">
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="arn8osj21xkrkbpu6o1bi9efjvlr7ldz" class="crayons-icon"><title id="arn8osj21xkrkbpu6o1bi9efjvlr7ldz">Navigation menu</title>
+    <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+</svg>
+
+      </button>
+    </span>
+    <a href="https://dev.to/" class="site-logo" aria-label="DEV Community Home">
+    <img class="site-logo__img" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/resized_logo_UQww2soKuUsjaOGNB38o.png" alt="DEV Community">
+</a>
+
+
+    <div class="crayons-header--search js-search-form" id="header-search"><form method="get" action="https://dev.to/search" role="search" accept-charset="UTF-8"><input name="utf8" type="hidden" value="✓"><div class="crayons-fields crayons-fields--horizontal"><div class="crayons-field flex-1 relative"><input class="crayons-header--search-input crayons-textfield" type="text" id="" name="q" placeholder="Search..." autocomplete="off" aria-label="Search term"><button type="submit" aria-label="Search" class="c-btn c-btn--icon-alone absolute inset-px left-auto mt-0 py-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" class="crayons-icon c-btn__icon" focusable="false"><path d="m18.031 16.617 4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path></svg></button></div></div></form>
+      
+    </div>
+
+    <div class="flex items-center h-100 ml-auto">
+      <a class="c-link c-link--icon-alone c-link--block m:hidden " id="search-link" aria-label="Search" href="https://dev.to/search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aeea0d9x5di7yijmceglrpci7mddj4l5" class="crayons-icon"><title id="aeea0d9x5di7yijmceglrpci7mddj4l5">Search</title>
+    <path d="M18.031 16.617l4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0111 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 01-1.969 5.617zm-2.006-.742A6.977 6.977 0 0018 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 004.875-1.975l.15-.15z"></path>
+</svg>
+
+      </a>
+        <span class="hidden m:flex ml-auto">
+          <a class="c-cta c-cta--branded mr-2 whitespace-nowrap js-policy-article-create" href="https://dev.to/new">
+            Create Post
+</a>
+          <span class="mod-icon-visible-block">
+            <a id="moderation-link" class="c-link c-link--icon-alone c-link--block mx-1" aria-label="Moderation" href="https://dev.to/mod">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a7kv5qjfvl18jxw0expabkjmqa2ebp81" class="crayons-icon"><title id="a7kv5qjfvl18jxw0expabkjmqa2ebp81">Moderation</title>
+    <path d="M3.783 2.826L12 1l8.217 1.826a1 1 0 01.783.976v9.987a6 6 0 01-2.672 4.992L12 23l-6.328-4.219A6 6 0 013 13.79V3.802a1 1 0 01.783-.976zM5 4.604v9.185a4 4 0 001.781 3.328L12 20.597l5.219-3.48A4 4 0 0019 13.79V4.604L12 3.05 5 4.604zM13 10h3l-5 7v-5H8l5-7v5z"></path>
+</svg>
+
+            </a>
+          </span>
+        </span>
+
+        <a href="https://dev.to/notifications" id="notifications-link" class="c-link c-link--icon-alone c-link--block mx-1" aria-label="Notifications">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a8l8zy7ypfcdmvcvsr8mr1abfrb5p0wc" class="crayons-icon"><title id="a8l8zy7ypfcdmvcvsr8mr1abfrb5p0wc">Notifications</title>
+    <path d="M20 17h2v2H2v-2h2v-7a8 8 0 1116 0v7zm-2 0v-7a6 6 0 10-12 0v7h12zm-9 4h6v2H9v-2z"></path>
+</svg>
+
+          <span class="c-indicator c-indicator--danger" id="notifications-number">41</span>
+        </a>
+
+        <div class="crayons-header__menu mx-1" id="crayons-header__menu">
+          <button type="button" class="c-btn c-btn--icon-alone radius-full p-1" id="member-menu-button" aria-label="Navigation menu" aria-expanded="false">
+            <span class="crayons-avatar crayons-avatar--l"><img class="crayons-avatar__image" alt="" id="nav-profile-image" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/1a5336f8-6a40-4892-983c-db335dc2a465.png"></span>
+          </button>
+          <div class="crayons-dropdown left-2 right-2 s:left-auto crayons-header__menu__dropdown inline-block m:-mr-2 top-100">
+  <ul class="m-0" id="crayons-header__menu__dropdown__list">
+    <li id="user-profile-link-placeholder" class="border-0 border-b-1 border-solid border-base-20 pb-2 mb-2">
+      <a href="https://dev.to/philiphow" id="first-nav-link" class="c-link c-link--default c-link--block lh-tight">
+        <div>
+          <span class="fw-medium block">Philip How</span>
+          <small class="fs-s opacity-75">@philiphow</small>
+        </div>
+      </a>
+    </li>
+
+    <li class="js-header-menu-admin-link">
+      <a href="https://dev.to/admin" class="c-link c-link--block" data-no-instant="">Admin</a>
+    </li>
+    <li>
+      <a href="https://dev.to/dashboard" class="c-link c-link--block">Dashboard</a>
+    </li>
+    <li>
+      <a href="https://dev.to/mod" class="c-link c-link--block trusted-visible-block">Moderator Center</a>
+    </li>
+    <li class="js-policy-article-create">
+      <a href="https://dev.to/new" class="c-link c-link--block">Create Post</a>
+</li>    <li>
+      <a href="https://dev.to/readinglist" class="c-link c-link--block">Reading list</a>
+    </li>
+    <li class="border-0 border-b-1 border-solid border-base-20 pb-2">
+      <a href="https://dev.to/settings" class="c-link c-link--block" id="second-last-nav-link">Settings</a>
+    </li>
+
+    <li class="pt-2">
+      <a href="https://dev.to/signout_confirm" class="c-link c-link--block" id="last-nav-link">Sign Out</a>
+    </li>
+  </ul>
+</div>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~applyApplicationPolicyToggles-6d7f40f127287c99835b.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/applyApplicationPolicyToggles-c43d362971956be7d858.chunk.js.download" defer="defer"></script>
+
+        </div>
+    </div>
+  </div>
+    <script>
+      // Here we have some scripts we want to get working on before
+      // waiting for the page to stream in.
+
+      // Load the current user's pic as quickly as it's available
+      var currentUser = localStorage.getItem('current_user')
+      var navProfilePic = document.getElementById('nav-profile-image')
+      if (currentUser && navProfilePic) {
+        navProfilePic.src = JSON.parse(currentUser).profile_image_90;
+      }
+
+      // Load notifications count as quickly as it's available.
+      // Not if we're on the notifications page itself
+      if (
+        window.location.pathname !== '/notifications'
+      ) {
+        var xmlhttp;
+
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+            var count = xmlhttp.response;
+            if (isNaN(count)) {
+              document
+                .getElementById('notifications-number')
+                .classList.add('hidden');
+            } else if (count != '0' && count != undefined && count != '') {
+              document.getElementById('notifications-number').innerHTML =
+                xmlhttp.response;
+              document
+                .getElementById('notifications-number')
+                .classList.remove('hidden');
+            } else {
+              document
+                .getElementById('notifications-number')
+                .classList.add('hidden');
+            }
+          }
+        };
+
+        xmlhttp.open('GET', '/notifications/counts', true);
+        xmlhttp.send();
+      }
+    </script>
+</header>
+
+<div class="hamburger">
+  <div class="hamburger__content">
+    <header class="hamburger__content__header">
+      <h2 class="fs-l fw-bold flex-1 break-word lh-tight">DEV Community</h2>
+
+      <button class="c-btn c-btn--icon-alone js-hamburger-trigger shrink-0" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a3a8a1a6xmp5xz64660s0wl7pvzmt6uq" aria-hidden="true" class="crayons-icon c-btn__icon"><title id="a3a8a1a6xmp5xz64660s0wl7pvzmt6uq">Close</title><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95z"></path></svg>
+
+      </button>
+    </header>
+
+    <div class="p-2 js-navigation-links-container" id="authentication-hamburger-actions">
+    </div>
+  </div>
+  <div class="hamburger__overlay js-hamburger-trigger"></div>
+</div>
+
+
+        <div id="active-broadcast" class="broadcast-wrapper"></div>
+  <div id="base-payment-pointer" data-payment-pointer="$ilp.uphold.com/24HhrUGG7ekn"></div>
+<div id="page-content" class="wrapper stories stories-show" data-current-page="stories-show">
+  <div id="page-content-inner" data-follow-clicks-initialized="true">
+    <div id="page-route-change" class="screen-reader-only" aria-live="polite" aria-atomic="true"></div>
+
+    
+
+
+<style>
+  .html-variant-wrapper { display: none}
+</style>
+
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/webcomponents-loader.js.download" integrity="sha384-3HK5hxQbkFqOIxMbpROlRmRtYl2LBZ52t+tqcjzsmr9NJuOWQxl8RgQSyFvq2lhy" crossorigin="anonymous" defer=""></script>
+
+  <script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~webShare-5cf8445b71000698bc8c.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/webShare-0df34c0ecde1461f7323.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~articlePage-83a59e1fd9b14d62fead.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/0-6a8935ca6bc68cd25de7.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/1-4d21e783d0ae28288869.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/articlePage-f005c54d6c62361574be.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~articleModerationTools-70e2537d3912f013aeb0.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/articleModerationTools-fabf5d54447e40e25e65.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~commentDropdowns-3a23a84f5899af0b0d8a.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/commentDropdowns-ab868bede6bbcaacacf7.chunk.js.download" defer="defer"></script>
+
+
+  
+<div class="crayons-layout crayons-layout--3-cols crayons-layout--article">
+  <aside class="crayons-layout__sidebar-left" aria-label="Article actions">
+    <div class="crayons-article-actions print-hidden">
+  <div class="crayons-article-actions__inner">
+
+    
+<div class="reaction-drawer__outer hoverdown" style="">
+  <button id="reaction-drawer-trigger" aria-label="reaction-drawer-trigger" aria-pressed="false" class="hoverdown-trigger crayons-reaction pseudo-reaction crayons-tooltip__activator relative">
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction--like crayons-reaction__icon--inactive" style="width: 40px; height: 40px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon">
+    <g clip-path="url(#clip0_988_3276)">
+        <path d="M19 14V17H22V19H18.999L19 22H17L16.999 19H14V17H17V14H19ZM20.243 4.75698C22.505 7.02498 22.583 10.637 20.479 12.992L19.059 11.574C20.39 10.05 20.32 7.65998 18.827 6.16998C17.324 4.67098 14.907 4.60698 13.337 6.01698L12.002 7.21498L10.666 6.01798C9.09103 4.60598 6.67503 4.66798 5.17203 6.17198C3.68203 7.66198 3.60703 10.047 4.98003 11.623L13.412 20.069L12 21.485L3.52003 12.993C1.41603 10.637 1.49503 7.01898 3.75603 4.75698C6.02103 2.49298 9.64403 2.41698 12 4.52898C14.349 2.41998 17.979 2.48998 20.242 4.75698H20.243Z" fill="#525252"></path>
+    </g>
+    <defs>
+        <clippath id="clip0_988_3276">
+        <rect width="24" height="24" fill="white"></rect>
+        </clippath>
+    </defs>
+</svg>
+
+      </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--active" style="width: 40px; height: 40px">
+        <img aria_hidden="true" height="24" width="24" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/heart-plus-active-9ea3b22f2bc311281db911d416166c5f430636e76b15cd5df6b3b841d830eefa.svg">
+      </span>
+      <span class="crayons-reaction__count" id="reaction_total_count">15</span>
+      <span class="crayons-tooltip__content">
+        Add reaction
+      </span>
+  </button>
+
+  <div class="reaction-drawer" aria-expanded="false">
+    <div class="reaction-drawer__container">
+        <button id="reaction-butt-like" name="Like" aria-label="Like" aria-pressed="false" class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2 activated" data-category="like">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg">
+    </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--active p-0">
+        <img aria_hidden="true" height="32" width="32" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg">
+      </span>
+    <span class="crayons-reaction__count" id="reaction-number-like">4</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Like
+    </span>
+</button>
+
+        <button id="reaction-butt-unicorn" name="Unicorn" aria-label="Unicorn" aria-pressed="false" class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2 activated" data-category="unicorn">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg">
+    </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--active p-0">
+        <img aria_hidden="true" height="32" width="32" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg">
+      </span>
+    <span class="crayons-reaction__count" id="reaction-number-unicorn">3</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Unicorn
+    </span>
+</button>
+
+        <button id="reaction-butt-exploding_head" name="Exploding Head" aria-label="Exploding Head" aria-pressed="false" class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2 activated" data-category="exploding_head">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg">
+    </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--active p-0">
+        <img aria_hidden="true" height="32" width="32" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg">
+      </span>
+    <span class="crayons-reaction__count" id="reaction-number-exploding_head">1</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Exploding Head
+    </span>
+</button>
+
+        <button id="reaction-butt-raised_hands" name="Raised Hands" aria-label="Raised Hands" aria-pressed="false" class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2 activated" data-category="raised_hands">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg">
+    </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--active p-0">
+        <img aria_hidden="true" height="32" width="32" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg">
+      </span>
+    <span class="crayons-reaction__count" id="reaction-number-raised_hands">4</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Raised Hands
+    </span>
+</button>
+
+        <button id="reaction-butt-fire" name="Fire" aria-label="Fire" aria-pressed="false" class="crayons-reaction crayons-tooltip__activator relative pt-2 pr-2 pb-1 pl-2 activated" data-category="fire">
+    <span class="crayons-reaction__icon crayons-reaction__icon--inactive p-0">
+      <img aria_hidden="true" height="32" width="32" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg">
+    </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--active p-0">
+        <img aria_hidden="true" height="32" width="32" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg">
+      </span>
+    <span class="crayons-reaction__count" id="reaction-number-fire">3</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Fire
+    </span>
+</button>
+
+    </div>
+  </div>
+</div>
+
+<button id="reaction-butt-comment" aria-label="Jump to Comments" aria-pressed="false" class="crayons-reaction crayons-reaction--comment crayons-tooltip__activator relative" data-category="comment">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M10 3h4a8 8 0 010 16v3.5c-5-2-12-5-12-11.5a8 8 0 018-8zm2 14h2a6 6 0 000-12h-4a6 6 0 00-6 6c0 3.61 2.462 5.966 8 8.48V17z"></path>
+</svg>
+
+    </span>
+    <span class="crayons-reaction__count" id="reaction-number-comment" data-count="0">0</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Jump to Comments
+    </span>
+</button>
+
+<button id="reaction-butt-readinglist" aria-label="Add to reading list" aria-pressed="false" class="crayons-reaction crayons-reaction--readinglist crayons-tooltip__activator relative" data-category="readinglist">
+    <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--inactive">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1zm13 2H6v15.432l6-3.761 6 3.761V4z"></path>
+</svg>
+
+    </span>
+      <span class="crayons-reaction__icon crayons-reaction__icon--borderless crayons-reaction__icon--active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-hidden="true" class="crayons-icon">
+    <path d="M5 2h14a1 1 0 011 1v19.143a.5.5 0 01-.766.424L12 18.03l-7.234 4.536A.5.5 0 014 22.143V3a1 1 0 011-1z"></path>
+</svg>
+
+      </span>
+    <span class="crayons-reaction__count" id="reaction-number-readinglist">0</span>
+
+    <span data-testid="tooltip" class="crayons-tooltip__content">
+      Save
+    </span>
+</button>
+
+
+
+    <div id="mod-actions-menu-btn-area" class="print-hidden trusted-visible-block align-center">
+        <button class="crayons-btn crayons-btn--ghost crayons-btn--icon-rounded mod-actions-menu-btn">
+          <svg width="24" height="24" class="crayons-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-labelledby="d6cd43ffbad3fe639e2e95c901ee88c8">
+            <title id="d6cd43ffbad3fe639e2e95c901ee88c8">Moderation</title>
+            <path d="M3.783 2.826L12 1l8.217 1.826a1 1 0 01.783.976v9.987a6 6 0 01-2.672 4.992L12 23l-6.328-4.219A6 6 0 013 13.79V3.802a1 1 0 01.783-.976zM5 4.604v9.185a4 4 0 001.781 3.328L12 20.597l5.219-3.48A4 4 0 0019 13.79V4.604L12 3.05 5 4.604zM13 10h3l-5 7v-5H8l5-7v5z"></path>
+          </svg>
+        </button>
+    </div>
+    <div class="align-center m:relative">
+      <button id="article-show-more-button" aria-controls="article-show-more-dropdown" aria-expanded="false" aria-haspopup="true" class="dropbtn crayons-btn crayons-btn--ghost-dimmed crayons-btn--icon-rounded" aria-label="Share post options" data-initialized="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-labelledby="apart39jx6owx03shccwlrggg3aacq5v" aria-hidden="true" class="crayons-icon dropdown-icon"><title id="apart39jx6owx03shccwlrggg3aacq5v">More...</title><path fill-rule="evenodd" clip-rule="evenodd" d="M7 12a2 2 0 11-4 0 2 2 0 014 0zm7 0a2 2 0 11-4 0 2 2 0 014 0zm5 2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+
+      </button>
+
+      <div id="article-show-more-dropdown" class="crayons-dropdown side-bar left-2 right-2 m:right-auto m:left-100 s:left-auto mb-1 m:mb-0 top-unset bottom-100 m:top-0 m:bottom-unset">
+        <div>
+          <button id="copy-post-url-button" class="flex justify-between crayons-link crayons-link--block w-100 bg-transparent border-0" data-posturl="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf">
+            <span class="fw-bold">Copy link</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="article-copy-icon" role="img" aria-labelledby="a1qdt4c41cialyr0mpvpf6o5wioalk4i" aria-hidden="true" class="crayons-icon mx-2 shrink-0"><title id="a1qdt4c41cialyr0mpvpf6o5wioalk4i">Copy link</title>
+    <path d="M7 6V3a1 1 0 011-1h12a1 1 0 011 1v14a1 1 0 01-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1 1 0 013 21l.003-14c0-.552.45-1 1.007-1H7zm2 0h8v10h2V4H9v2zm-2 5v2h6v-2H7zm0 4v2h6v-2H7z"></path>
+</svg>
+
+          </button>
+          <div id="article-copy-link-announcer" aria-live="polite" class="crayons-notice crayons-notice--success my-2 p-1" hidden="">Copied to Clipboard</div>
+        </div>
+
+        <div class="Desktop-only">
+          <a target="_blank" class="crayons-link crayons-link--block" rel="noopener" href="https://twitter.com/intent/tweet?text=%22How%20to%20Install%20and%20Set%20Up%20a%20Ghost%20Blog%20on%20AWS%20Lightsail%20-%20Step%20by%20Step%20Tutorial%22%20by%20%40DevarshiShimpi%20%23DEVCommunity%20https%3A%2F%2Fdev.to%2Fdevarshishimpi%2Fhow-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf">
+            Share to Twitter
+          </a>
+          <a target="_blank" class="crayons-link crayons-link--block" rel="noopener" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fdev.to%2Fdevarshishimpi%2Fhow-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf&amp;title=How%20to%20Install%20and%20Set%20Up%20a%20Ghost%20Blog%20on%20AWS%20Lightsail%20-%20Step%20by%20Step%20Tutorial&amp;summary=Welcome%20to%20this%20step-by-step%20tutorial%20on%20how%20to%20install%20and%20set%20up%20a%20Ghost%20blog%20on%20AWS%20Lightsail....&amp;source=DEV%20Community">
+            Share to LinkedIn
+          </a>
+          <a target="_blank" class="crayons-link crayons-link--block" rel="noopener" href="https://www.reddit.com/submit?url=https%3A%2F%2Fdev.to%2Fdevarshishimpi%2Fhow-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf&amp;title=How%20to%20Install%20and%20Set%20Up%20a%20Ghost%20Blog%20on%20AWS%20Lightsail%20-%20Step%20by%20Step%20Tutorial">
+            Share to Reddit
+          </a>
+          <a target="_blank" class="crayons-link crayons-link--block" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fdev.to%2Fdevarshishimpi%2Fhow-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf&amp;t=How%20to%20Install%20and%20Set%20Up%20a%20Ghost%20Blog%20on%20AWS%20Lightsail%20-%20Step%20by%20Step%20Tutorial">
+            Share to Hacker News
+          </a>
+          <a target="_blank" class="crayons-link crayons-link--block" rel="noopener" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fdev.to%2Fdevarshishimpi%2Fhow-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf">
+            Share to Facebook
+          </a>
+          <a target="_blank" class="crayons-link crayons-link--block" rel="noopener" href="https://toot.kytta.dev/?text=https%3A%2F%2Fdev.to%2Fdevarshishimpi%2Fhow-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf">
+            Share to Mastodon
+          </a>
+        </div>
+
+        <web-share-wrapper shareurl="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf" sharetitle="How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial" sharetext="Welcome to this step-by-step tutorial on how to install and set up a Ghost blog on AWS Lightsail...." template="web-share-button">
+          <a href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#" class="dropdown-link-row crayons-link crayons-link--block">Share Post via...</a>
+        </web-share-wrapper>
+        <template id="web-share-button"></template>
+
+        <a href="https://dev.to/report-abuse" class="crayons-link crayons-link--block">Report Abuse</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </aside>
+
+  <main id="main-content" class="crayons-layout__content grid gap-4">
+    <div class="article-wrapper">
+
+
+      <article class="crayons-card crayons-article mb-4" id="article-show-container" data-article-id="1641981" data-article-slug="how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf" data-author-id="838856" data-author-name="Devarshi Shimpi" data-author-username="devarshishimpi" data-co-author-ids="" data-path="/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf" data-pin-path="/stories/feed/pinned_article" data-pinned-article-id="" data-published="true" data-scheduled="false" lang="en" data-buttons-initialized="true">
+        <header class="crayons-article__header" id="main-title">
+            <a class="crayons-article__cover" href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/by375g5il2dr6rasmza3.png">
+              <img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/by375g5il2dr6rasmza3.png" style="aspect-ratio: auto 1000 / 420;" width="1000" height="420" class="crayons-article__cover__image" alt="Cover image for How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial">
+            </a>
+
+          <div class="crayons-article__header__meta">
+            <div class="flex s:items-start flex-col s:flex-row">
+              <div id="action-space" class="crayons-article__actions mb-4 s:mb-0 s:order-last"><a class="crayons-btn crayons-btn--s crayons-btn--ghost px-2" href="https://dev.to/admin/content_manager/articles/1641981" data-no-instant="">Admin</a></div>
+              <div class="flex flex-1 mb-5 items-start">
+                <div class="relative">
+                    <a href="https://dev.to/devarshishimpi"><img class="radius-full align-middle" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/62065874-e2ea-4560-bdee-1cf038140c6f.png" width="40" height="40" alt="Devarshi Shimpi"></a>
+                </div>
+                <div class="pl-3 flex-1">
+                  <a href="https://dev.to/devarshishimpi" class="crayons-link fw-bold">Devarshi Shimpi</a>
+                  <p class="fs-xs color-base-60">
+                      Posted on <time datetime="2023-10-21T14:14:20Z" class="date-no-year" title="Saturday, October 21, 2023 at 3:14:20 PM">Oct 21</time>
+
+
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="multiple_reactions_engagement">
+    <span class="reaction_engagement_like">
+      <img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="24" height="24">
+      <span id="reaction_engagement_like_count">4</span>
+    </span>
+    <span class="reaction_engagement_unicorn">
+      <img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="24" height="24">
+      <span id="reaction_engagement_unicorn_count">3</span>
+    </span>
+    <span class="reaction_engagement_exploding_head">
+      <img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="24" height="24">
+      <span id="reaction_engagement_exploding_head_count">1</span>
+    </span>
+    <span class="reaction_engagement_raised_hands">
+      <img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="24" height="24">
+      <span id="reaction_engagement_raised_hands_count">4</span>
+    </span>
+    <span class="reaction_engagement_fire">
+      <img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="24" height="24">
+      <span id="reaction_engagement_fire_count">3</span>
+    </span>
+</div>
+
+
+            <h1 class="fs-3xl m:fs-4xl l:fs-5xl fw-bold s:fw-heavy lh-tight mb-2 long">
+              How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial
+            </h1>
+
+              <div class="spec__tags flex flex-wrap">
+                  <a class="crayons-tag   " style="
+        --tag-bg: rgba(33, 43, 58, 0.10);
+        --tag-prefix: #212b3a;
+        --tag-bg-hover: rgba(33, 43, 58, 0.10);
+        --tag-prefix-hover: #212b3a;
+      " href="https://dev.to/t/aws"><span class="crayons-tag__prefix">#</span>aws</a>
+                  <a class="crayons-tag   " style="
+        --tag-bg: rgba(6, 181, 0, 0.10);
+        --tag-prefix: #06B500;
+        --tag-bg-hover: rgba(6, 181, 0, 0.10);
+        --tag-prefix-hover: #06B500;
+      " href="https://dev.to/t/devops"><span class="crayons-tag__prefix">#</span>devops</a>
+                  <a class="crayons-tag   " style="
+        --tag-bg: rgba(0, 131, 53, 0.10);
+        --tag-prefix: #008335;
+        --tag-bg-hover: rgba(0, 131, 53, 0.10);
+        --tag-prefix-hover: #008335;
+      " href="https://dev.to/t/beginners"><span class="crayons-tag__prefix">#</span>beginners</a>
+                  <a class="crayons-tag   " style="
+        --tag-bg: rgba(254, 255, 165, 0.10);
+        --tag-prefix: #FEFFA5;
+        --tag-bg-hover: rgba(254, 255, 165, 0.10);
+        --tag-prefix-hover: #FEFFA5;
+      " href="https://dev.to/t/tutorial"><span class="crayons-tag__prefix">#</span>tutorial</a>
+              </div>
+          </div>
+        </header>
+
+        <div class="crayons-article__main">
+
+          <div class="crayons-article__body text-styles spec__body" data-article-id="1641981" id="article-body">
+            <p>Welcome to this step-by-step tutorial on how to install and set up a Ghost blog on AWS Lightsail. Ghost is a popular open-source publishing platform that is simple, lightweight, and designed specifically for bloggers. With AWS Lightsail, you can easily deploy your own Ghost blog in just a few simple steps.</p>
+
+<p>Feel free to checkout the below video I made for this tutorial as well.</p>
+
+<p><div class=" fluidvids" style="padding-top: 56.1972%;"><iframe width="710" height="399" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/mCmqvZyIOwY.html" allowfullscreen="" loading="lazy" class=" fluidvids-elem">
+</iframe></div>
+</p>
+
+<p>In this tutorial, we will walk you through the complete process of installing and configuring Ghost on an AWS Lightsail instance. By the end of this guide, you will have your own fully functional Ghost blog up and running.</p>
+
+<h2>
+  <a name="prerequisites" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#prerequisites">
+  </a>
+  Prerequisites
+</h2>
+
+<p>Before we begin, make sure you have the following:</p>
+
+<ul>
+<li>  An AWS Lightsail account</li>
+<li>  Basic knowledge of AWS Lightsail and its services</li>
+<li>  A registered domain name (Optional)</li>
+</ul>
+
+<h2>
+  <a name="step-1-create-an-aws-lightsail-instance" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#step-1-create-an-aws-lightsail-instance">
+  </a>
+  Step 1: Create an AWS Lightsail Instance
+</h2>
+
+<p>The first step is to create an AWS Lightsail instance. Here's how you can do it:</p>
+
+<p>1.Log in to your AWS Lightsail account and Click on the <strong>Create instance</strong> button.</p>
+
+<p><a href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/j7j6gpja68qn84lntyft.png" class="article-body-image-wrapper"><img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/j7j6gpja68qn84lntyft.png" alt="aws-lightsail" loading="lazy" width="800" height="323"></a></p>
+
+<p>2.Select your preferred instance location, operating system, and instance plan.</p>
+
+<p><a href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/23xgf21wnb2ftanlefiz.png" class="article-body-image-wrapper"><img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/23xgf21wnb2ftanlefiz.png" alt="lightsail-create-1" loading="lazy" width="800" height="407"></a></p>
+
+<p><a href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/c4vpa6u39rcwqbcfsr5k.png" class="article-body-image-wrapper"><img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/c4vpa6u39rcwqbcfsr5k.png" alt="lightsail-create-2" loading="lazy" width="800" height="333"></a></p>
+
+<p>3.Click on the "Create" button to create the instance.</p>
+
+<p><a href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/d771hrj6tuajgisimshe.png" class="article-body-image-wrapper"><img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/d771hrj6tuajgisimshe.png" alt="lightsail-create-3" loading="lazy" width="800" height="385"></a></p>
+
+<p>Once the instance is created, note down the public IP address of your instance. We will need it later.</p>
+
+<h2>
+  <a name="step-2-connect-to-your-lightsail-instance" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#step-2-connect-to-your-lightsail-instance">
+  </a>
+  Step 2: Connect to Your Lightsail Instance
+</h2>
+
+<p>To connect to your Lightsail instance, follow these instructions:</p>
+
+<p>Open your terminal or SSH client. Use the following command to connect to your instance:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>ssh -i path/to/your/key.pem ubuntu@your_instance_ip
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Replace <code>path/to/your/key.pem</code> with the path to your private key file, and <code>your_instance_ip</code> with the public IP address of your instance.</p>
+
+<h2>
+  <a name="step-3-update-packages-and-install-dependencies" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#step-3-update-packages-and-install-dependencies">
+  </a>
+  Step 3: Update Packages and Install Dependencies
+</h2>
+
+<p>Once you are connected to your Lightsail instance, update the packages and install the necessary dependencies using the following commands:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>sudo su
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>sudo apt update &amp;&amp; apt upgrade -y
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>sudo apt-get install nginx mysql-server -y
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>sudo ufw allow 'Nginx Full'
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h2>
+  <a name="step-4-install-nodejs-npm-and-ghostcli" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#step-4-install-nodejs-npm-and-ghostcli">
+  </a>
+  Step 4: Install Nodejs, NPM and Ghost-CLI
+</h2>
+
+<p>Next steps is to install nodejs and npm which we'll doing using nodesource github repository:<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>sudo apt-get install ca-certificates curl gnupg -y
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>sudo mkdir -p /etc/apt/keyrings
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>NODE_MAJOR=18
+sudo apt-get update &amp;&amp; sudo apt-get install nodejs -y
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p>Next up, let's install Ghost-CLI package globally.<br>
+</p>
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>sudo npm install ghost-cli@latest -g
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h2>
+  <a name="step-5-install-and-configure-ghost" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#step-5-install-and-configure-ghost">
+  </a>
+  Step 5: Install and Configure Ghost
+</h2>
+
+<p>Now it's time to install and configure Ghost on your Lightsail instance. Follow these steps:</p>
+
+<h3>
+  <a name="create-a-new-user-with-required-permissions" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#create-a-new-user-with-required-permissions">
+  </a>
+  Create a new user with required permissions
+</h3>
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>adduser &lt;user&gt;
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>usermod -aG sudo &lt;user&gt;
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>su - &lt;user&gt;
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p><em>Note: Using the user name ghost causes conflicts with the Ghost-CLI, so it’s important to use an alternative name.</em></p>
+
+<p><em>Note: replace <code>&lt;user&gt;</code> with the username of the username you want to add</em></p>
+
+<h3>
+  <a name="create-a-new-directory-set-correct-permissions-and-navigate-to-it-for-your-ghost-blog" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#create-a-new-directory-set-correct-permissions-and-navigate-to-it-for-your-ghost-blog">
+  </a>
+  Create a new directory, set correct permissions and navigate to it for your Ghost blog:
+</h3>
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>sudo mkdir -p /var/www/sitename
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>sudo chown &lt;user&gt;:&lt;user&gt; /var/www/sitename
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>sudo chmod 775 /var/www/sitename
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>cd /var/www/sitename
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="install-and-start-ghost" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#install-and-start-ghost">
+  </a>
+  Install and Start Ghost:
+</h3>
+
+
+
+<div class="highlight js-code-highlight">
+<pre class="highlight plaintext"><code>ghost install
+</code></pre>
+<div class="highlight__panel js-actions-panel">
+<div class="highlight__panel-action js-fullscreen-code-action">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-on"><title>Enter fullscreen mode</title>
+    <path d="M16 3h6v6h-2V5h-4V3zM2 3h6v2H4v4H2V3zm18 16v-4h2v6h-6v-2h4zM4 19h4v2H2v-6h2v4z"></path>
+</svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" class="highlight-action crayons-icon highlight-action--fullscreen-off"><title>Exit fullscreen mode</title>
+    <path d="M18 7h4v2h-6V3h2v4zM8 9H2V7h4V3h2v6zm10 8v4h-2v-6h6v2h-4zM8 15v6H6v-4H2v-2h6z"></path>
+</svg>
+
+</div>
+</div>
+</div>
+
+
+
+<p><a href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/wn6y7gc3oa5owz3dfkdr.png" class="article-body-image-wrapper"><img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/wn6y7gc3oa5owz3dfkdr.png" alt="ghost-setup-1" loading="lazy" width="660" height="410"></a></p>
+
+<p><a href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/gaqmq8uzerqs182l8yq4.png" class="article-body-image-wrapper"><img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/gaqmq8uzerqs182l8yq4.png" alt="ghost-setup-2" loading="lazy" width="800" height="619"></a></p>
+
+<p><strong>During the installation, Ghost-CLI will ask you a series of questions. Provide the following answers:</strong></p>
+
+<ul>
+<li>  Blog URL: Enter your domain name (e.g., <code>https://your_domain.com</code>).</li>
+<li>  MySQL hostname: Press Enter to use the default value (<code>localhost</code>).</li>
+<li>  MySQL username / password: Enter the MySQL username and password you want to use for your Ghost blog.</li>
+<li>  Ghost database name: Enter the name for your Ghost database. You can use the default value.</li>
+<li>  Set up a Ghost MySQL user? (Recommended): Choose "Yes" to create a custom MySQL user for Ghost.</li>
+<li>  Set up NGINX? (Recommended): Choose "Yes" to automatically set up NGINX for your Ghost blog.</li>
+<li>  Set up SSL? (Recommended): Choose "Yes" if you have an SSL certificate for your domain. Otherwise, choose "No".</li>
+<li>  Set up systemd? (Recommended): Choose "Yes" to use systemd as the process manager for Ghost.</li>
+</ul>
+
+<h2>
+  <a name="step-6-access-your-ghost-blog" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#step-6-access-your-ghost-blog">
+  </a>
+  Step 6: Access Your Ghost Blog
+</h2>
+
+<p>To access your Ghost blog, open a web browser and enter your domain name (e.g., <code>https://your_domain.com</code>). You should see the Ghost setup page, where you can create your admin account and customize your blog.</p>
+
+<p><a href="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/drzp5kxzkycfmez3uu09.png" class="article-body-image-wrapper"><img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/drzp5kxzkycfmez3uu09.png" alt="ghost-preview-blog" loading="lazy" width="800" height="383"></a></p>
+
+<h2>
+  <a name="conclusion" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#conclusion">
+  </a>
+  Conclusion
+</h2>
+
+<p>Congratulations! Your Ghost blog is now up and running on your AWS Lightsail instance.</p>
+
+<p>Feel free to checkout the below video I made for this tutorial as well.</p>
+
+<p><div class=" fluidvids" style="padding-top: 56.1972%;"><iframe width="710" height="399" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/mCmqvZyIOwY(1).html" allowfullscreen="" loading="lazy" class=" fluidvids-elem">
+</iframe></div>
+</p>
+
+<p>Now it's time to start creating and publishing your own content on your brand new Ghost blog. Happy blogging!</p>
+
+
+          </div>
+
+        </div>
+          <section id="comments" data-follow-button-container="true" data-updated-at="2023-10-27 14:34:27 UTC" class="text-padding mb-4 border-t-1 border-0 border-solid border-base-10">
+      <header class="relative flex justify-between items-center mb-6">
+        <div class="flex items-center">
+          <h2 class="crayons-subtitle-1">
+            Top comments <span class="js-comments-count" data-comments-count="0">(0)</span>
+          </h2>
+          <button class="c-btn c-btn--ghost crayons-btn--icon-left" id="toggle-comments-sort-dropdown" aria-controls="comments-sort-dropdown-container" aria-expanded="false" aria-label="Sort comments" aria-haspopup="true" data-initialized="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" class="mt-2"><title>Crown</title>
+    <path d="M12 18l-4-3.771 1-.943 3 2.829 3-2.829 1 .943L12 18zm0-10.115l-3 2.829-1-.943L12 6l4 3.771-1 .942-3-2.828z"></path>
+</svg>
+
+          </button>
+        </div>
+
+        <nav class="crayons-dropdown p-4" id="comments-sort-dropdown-container" aria-labelledby="comments-sort-title">
+            <h3 id="comments-sort-title" class="mb-3">Sort discussion: </h3>
+            <ul class="comments-sort-dropdown__list">
+              <li class="comment-sort-option">
+  <a href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf?comments_sort=top#toggle-comments-sort-dropdown" class="comment-sort-option__header pl-7 pb-0 crayons-link--block block" aria-describedby="top-description-text" aria-current="page">
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-labelledby="ana6k2zryumkz7ckdkfn7kqna3g4zh02" aria-hidden="true" class="crayons-icon"><title id="ana6k2zryumkz7ckdkfn7kqna3g4zh02">Selected Sort Option</title>
+    <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414 4.95 4.95z"></path>
+</svg>
+
+       Top
+    </div>
+     <div id="top-description-text" class="crayons-field__description">
+      Most upvoted and relevant comments will be first
+    </div>
+  </a>
+</li>
+
+              <li class="comment-sort-option">
+  <a href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf?comments_sort=latest#toggle-comments-sort-dropdown" class="comment-sort-option__header pl-7 pb-0 crayons-link--block block" aria-describedby="latest-description-text" aria-current="">
+    <div>
+      
+       Latest
+    </div>
+     <div id="latest-description-text" class="crayons-field__description">
+      Most recent comments will be first
+    </div>
+  </a>
+</li>
+
+              <li class="comment-sort-option">
+  <a href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf?comments_sort=oldest#toggle-comments-sort-dropdown" class="comment-sort-option__header pl-7 pb-0 crayons-link--block block" aria-describedby="oldest-description-text" aria-current="">
+    <div>
+      
+       Oldest
+    </div>
+     <div id="oldest-description-text" class="crayons-field__description">
+      The oldest comments will be first
+    </div>
+  </a>
+</li>
+
+            </ul>
+        </nav>
+
+        <div id="comment-subscription" class="print-hidden"><div class="static"><div role="group" aria-label="Comment subscription options" class="crayons-btn-group"><button type="button" data-tracking-name="comment_subscription_toggle" class="crayons-btn crayons-btn--outlined">Subscribe</button></div></div>
+          
+        </div>
+      </header>
+
+      <div id="comments-container" data-testid="comments-container" data-commentable-id="1641981" data-commentable-type="Article" data-has-recent-comment-activity="true">
+
+          <div id="response-templates-data" class="hidden"></div>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~validateFileInputs-5153db5c9cbc3fe78418.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/0-6a8935ca6bc68cd25de7.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/1-4d21e783d0ae28288869.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/validateFileInputs-81021d8baaa08736b65c.chunk.js.download" defer="defer"></script>
+
+
+<form class="comment-form print-hidden" id="new_comment" action="https://dev.to/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓" autocomplete="off">
+
+  <input type="hidden" name="authenticity_token" value="NOTHING" id="new_comment_authenticity_token">
+
+    <input value="1641981" autocomplete="off" type="hidden" name="comment[commentable_id]" id="comment_commentable_id">
+    <input value="Article" autocomplete="off" type="hidden" name="comment[commentable_type]" id="comment_commentable_type">
+    
+
+  <span class="crayons-avatar m:crayons-avatar--l mr-2 shrink-0">
+    <img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/1a5336f8-6a40-4892-983c-db335dc2a465.png" width="32" height="32" alt="pic" class="crayons-avatar__image overflow-hidden" id="comment-primary-user-profile--avatar" loading="lazy">
+  </span>
+  <div class="comment-form__inner">
+    <div class="comment-form__field" data-tracking-name="comment_form_textfield">
+      <textarea placeholder="Add to the discussion" onfocus="handleFocus(event)" onkeyup="handleKeyUp(event)" onkeydown="handleKeyDown(event)" oninput="handleChange(event)" id="text-area" required="required" class="crayons-textfield comment-textarea crayons-textfield--ghost" aria-label="Add a comment to the discussion" name="comment[body_markdown]"></textarea>
+
+    </div>
+
+    <div class="response-templates-container crayons-card crayons-card--secondary p-4 mb-4 comment-form__templates fs-base hidden">
+      <header class="mb-3">
+        <button type="button" class="crayons-btn personal-template-button active" data-target-type="personal" data-form-id="new_comment">Personal</button>
+        <button type="button" class="crayons-btn moderator-template-button hidden" data-target-type="moderator" data-form-id="new_comment">Trusted User</button>
+      </header>
+
+      <div class="personal-responses-container">
+      </div>
+      <div class="moderator-responses-container hidden">
+      </div>
+
+      <a target="_blank" rel="noopener nofollow" href="https://dev.to/settings/response-templates">
+        Create template
+      </a>
+      <p>Templates let you quickly answer FAQs or store snippets for re-use.</p>
+    </div>
+
+    <div class="comment-form__preview text-styles text-styles--secondary" id="preview-div"></div>
+
+    <div class="comment-form__buttons mb-4">
+      <button type="submit" class="crayons-btn mr-2 js-btn-enable" onclick="validateField(event)" data-tracking-name="comment_submit_button" disabled="">Submit</button>
+      <button type="button" class="preview-toggle crayons-btn crayons-btn--secondary comment-action-preview js-btn-enable mr-2" data-tracking-name="comment_preview_button" disabled="">Preview</button>
+      <a href="https://dev.to/404.html" class="dismiss-edit-comment crayons-btn crayons-btn--ghost js-btn-dismiss hidden">Dismiss</a>
+    </div>
+  </div>
+
+  <div class="code-of-conduct" id="toggle-code-of-conduct-checkbox"></div>
+</form>
+
+
+        <div class="comments" id="comment-trees-container">
+        </div>
+      </div>
+
+      <div class="align-center">
+
+
+  <nav class="fs-s align-center block" aria-label="Conduct controls">
+  <a href="https://dev.to/code-of-conduct" class="crayons-link crayons-link--secondary">Code of Conduct</a>
+  <span class="opacity-25 px-2" role="presentation">•</span>
+  <a href="https://dev.to/report-abuse" class="crayons-link crayons-link--secondary">Report abuse</a>
+</nav>
+
+</div>
+
+  </section>
+  <div id="hide-comments-modal" class="hidden">
+  <form id="hide-comments-modal__form" class="hide-comments-modal__form" data-type="json" action="https://dev.to/comments/hide" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓" autocomplete="off"><input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="lKMUaB3xNvMMFgyk9CNWfzmpFAm6FUPfekLHl9Sjccb3TDjmbNH5c_UTfU2bmcYdU4Mzn3OWdfqr4HXzwVEXVA" autocomplete="off">
+    <div class="hide-comments-modal__content">
+      <p class="pb-2">
+        Are you sure you want to hide this comment? It will become hidden in your post, but will still be visible via the comment's <a id="hide-comments-modal__comment-permalink" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#">permalink</a>.
+      </p>
+      <label class="crayons-field crayons-field--checkbox my-2">
+        <input name="hide_children" type="hidden" value="0" autocomplete="off"><input class="hide_children crayons-checkbox" type="checkbox" value="1" name="hide_children" id="hide_children">
+        <p class="crayons-field__label">Hide child comments as well</p>
+      </label>
+      <p class="pb-4 pt-2">
+        <button type="submit" class="crayons-btn">
+          Confirm
+        </button>
+      </p>
+    </div>
+</form>  <p class="fs-s color-base-60">For further actions, you may consider blocking this person and/or <a id="hide-comments-modal__report-link" href="https://dev.to/report-abuse">reporting abuse</a></p>
+</div>
+
+
+
+      </article>
+
+      <div class="pb-4 crayons-layout__comments-billboard">
+        <div class="js-billboard-container pb-4 crayons-layout__comments-billboard" data-async-url="/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf/billboards/post_comments"><div>    <div class="crayons-card crayons-card--secondary crayons-sponsorship billboard js-billboard" data-display-unit="" data-id="33815" data-category-click="click" data-category-impression="impression" data-context-type="article" data-type-of="external">
+    <div class="crayons-sponsorship__header relative">
+    <div class="flex">
+      <a href="https://dev.to/peerlist" target="_blank" rel="noopener" class="flex">
+        <img width="24" height="24" class="radius-default crayons-sponsorship__image" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/0087fd8c-f0be-4770-a4d5-94eeaf533a15.png" alt="profile" loading="lazy">
+        <div class="crayons-sponsorship__title ml-2 fs-s fw-medium">Peerlist</div>
+      </a>
+        <span class="crayons-sponsorship__indicator c-indicator c-indicator--subtle c-indicator--round fs-2xs fw-medium ml-2 py-1 px-2">Promoted</span>
+    </div>
+
+  <button id="sponsorship-dropdown-trigger-33815" aria-controls="sponsorship-dropdown-33815" aria-expanded="false" aria-haspopup="true" class="dropBtn crayons-sponsorship__dropdown crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon" aria-label="Toggle dropdown menu" data-initialized="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a5achecchx23ziir1n07bje0aiy8vtfj" class="crayons-icon pointer-events-none"><title id="a5achecchx23ziir1n07bje0aiy8vtfj">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+  </button>
+
+  <div id="sponsorship-dropdown-33815" class="crayons-dropdown sponsorship-dropdown right-0">
+    <ul class="list-none m-0">
+        <li>
+          <a class="crayons-link crayons-link--block" href="https://dev.to/billboards">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z"></path>
+</svg>
+
+            What's a billboard?
+          </a>
+        </li>
+      <li>
+        <a class="crayons-link crayons-link--block" href="https://dev.to/settings/customization#sponsors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M3.34 16.9999C2.91727 16.2689 2.58866 15.4874 2.362 14.6739C2.85531 14.423 3.26959 14.0406 3.55903 13.5688C3.84846 13.0971 4.00176 12.5545 4.00197 12.0011C4.00218 11.4476 3.84928 10.9049 3.5602 10.4329C3.27112 9.961 2.85712 9.57821 2.364 9.32694C2.81604 7.69243 3.67673 6.1999 4.865 4.98994C5.32909 5.29167 5.86762 5.45911 6.42098 5.47373C6.97434 5.48834 7.52095 5.34958 8.00033 5.07278C8.47971 4.79598 8.87315 4.39194 9.13713 3.90539C9.4011 3.41883 9.52531 2.86872 9.496 2.31594C11.1381 1.89157 12.8612 1.89226 14.503 2.31795C14.474 2.87071 14.5984 3.42073 14.8626 3.90715C15.1268 4.39357 15.5204 4.79742 15.9998 5.07401C16.4793 5.35059 17.0259 5.48913 17.5793 5.4743C18.1326 5.45946 18.671 5.29183 19.135 4.98994C19.714 5.57994 20.228 6.25095 20.66 6.99995C21.093 7.74895 21.417 8.52995 21.638 9.32595C21.1447 9.57685 20.7304 9.95932 20.441 10.4311C20.1515 10.9028 19.9982 11.4454 19.998 11.9988C19.9978 12.5523 20.1507 13.095 20.4398 13.5669C20.7289 14.0389 21.1429 14.4217 21.636 14.6729C21.184 16.3075 20.3233 17.8 19.135 19.0099C18.6709 18.7082 18.1324 18.5408 17.579 18.5262C17.0257 18.5115 16.479 18.6503 15.9997 18.9271C15.5203 19.2039 15.1268 19.6079 14.8629 20.0945C14.5989 20.5811 14.4747 21.1312 14.504 21.6839C12.8619 22.1083 11.1388 22.1076 9.497 21.6819C9.52605 21.1292 9.4016 20.5792 9.13742 20.0927C8.87324 19.6063 8.47964 19.2025 8.00017 18.9259C7.5207 18.6493 6.97405 18.5108 6.42073 18.5256C5.8674 18.5404 5.32896 18.7081 4.865 19.0099C4.27399 18.4069 3.76159 17.7315 3.34 16.9999ZM9 17.1959C10.0656 17.8106 10.8668 18.797 11.25 19.9659C11.749 20.0129 12.25 20.0139 12.749 19.9669C13.1324 18.7978 13.934 17.8114 15 17.1969C16.0652 16.5806 17.3205 16.3794 18.525 16.6319C18.815 16.2239 19.065 15.7889 19.273 15.3339C18.4524 14.4174 17.9991 13.2302 18 11.9999C18 10.7399 18.47 9.56295 19.273 8.66595C19.0635 8.21109 18.8125 7.77658 18.523 7.36795C17.3193 7.62025 16.0648 7.41942 15 6.80395C13.9344 6.18932 13.1332 5.20293 12.75 4.03394C12.251 3.98694 11.75 3.98594 11.251 4.03294C10.8676 5.20209 10.066 6.1885 9 6.80295C7.93478 7.41926 6.67948 7.62046 5.475 7.36795C5.18556 7.77623 4.93513 8.21081 4.727 8.66595C5.54757 9.5825 6.00088 10.7697 6 11.9999C6 13.2599 5.53 14.4369 4.727 15.3339C4.93647 15.7888 5.18754 16.2233 5.477 16.6319C6.68072 16.3796 7.93521 16.5805 9 17.1959ZM12 14.9999C11.2044 14.9999 10.4413 14.6839 9.87868 14.1213C9.31607 13.5587 9 12.7956 9 11.9999C9 11.2043 9.31607 10.4412 9.87868 9.87862C10.4413 9.31602 11.2044 8.99995 12 8.99995C12.7956 8.99995 13.5587 9.31602 14.1213 9.87862C14.6839 10.4412 15 11.2043 15 11.9999C15 12.7956 14.6839 13.5587 14.1213 14.1213C13.5587 14.6839 12.7956 14.9999 12 14.9999ZM12 12.9999C12.2652 12.9999 12.5196 12.8946 12.7071 12.7071C12.8946 12.5195 13 12.2652 13 11.9999C13 11.7347 12.8946 11.4804 12.7071 11.2928C12.5196 11.1053 12.2652 10.9999 12 10.9999C11.7348 10.9999 11.4804 11.1053 11.2929 11.2928C11.1054 11.4804 11 11.7347 11 11.9999C11 12.2652 11.1054 12.5195 11.2929 12.7071C11.4804 12.8946 11.7348 12.9999 12 12.9999Z" fill="black"></path>
+</svg>
+
+          Manage preferences
+        </a>
+      </li>
+      <hr>
+      <li>
+        <a class="crayons-link crayons-link--block" href="https://dev.to/report-abuse?billboard=33815">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M12.382 3a1 1 0 0 1 .894.553L14 5h6a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-6.382a1 1 0 0 1-.894-.553L12 16H5v6H3V3h9.382Zm-.618 2H5v9h8.236l1 2H19V7h-6.236l-1-2Z"></path>
+</svg>
+
+          Report billboard
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+    <div class="p-1 pt-3 text-styles text-styles--billboard">
+      <p><a href="https://plst.in/devto"><img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/YRrHjk6.png" alt="Peerlist Image" width="1909" height="1512" loading="lazy"></a></p><h2>  <a name="your-peerlist-profile-is-everything-a-recruiter-needs-to-know-about-you" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#your-peerlist-profile-is-everything-a-recruiter-needs-to-know-about-you">  </a>  <a href="https://plst.in/devto">Your Peerlist Profile is everything a recruiter needs to know about you!</a></h2><p>Join Peerlist and showcase your work from various platforms on your Peerlist profile with our one-click integrations with GitHub, Dribbble, Product Hunt, Substack, and many more.</p><p><a href="https://plst.in/devto" class="ltag_cta ltag_cta--branded" role="button">Learn More</a></p>
+    </div>
+  </div>
+
+</div></div>
+      </div>
+
+          <section class="crayons-card crayons-card--secondary text-padding mb-4 print-hidden" id="bottom-content-read-next">
+    <h2 class="crayons-subtitle-1">Read next</h2>
+      <a href="https://dev.to/aws-builders/deploying-nodejs-apps-on-aws-elastic-beanstalk-or-app-runner-45am" data-preload-image="https://res.cloudinary.com/practicaldev/image/fetch/s--Ahfq3xzW--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jp7nakkd0xxp6oy6ys4k.png" class="crayons-link mt-6 block">
+        <div class="flex items-center">
+          <span class="crayons-avatar crayons-avatar--xl m:crayons-avatar--2xl mr-4 shrink-0">
+              <img loading="lazy" alt="khairahscorner profile image" class="crayons-avatar__image" width="100" height="100" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/efa02e6a-d553-4557-937b-d3d297b8a375.jpeg">
+          </span>
+          <div>
+            <h3 class="fs-xl mb-0 lh-tight">Deploying Node.js Apps on AWS: Elastic Beanstalk Or App Runner?</h3>
+            <p class="opacity-75 pt-1">
+              Airah Yusuff - <time datetime="2023-10-25T09:24:55Z">Oct 25</time>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="https://dev.to/idurar/best-reactjs-frontend-bootcamp-2oa7" data-preload-image="https://res.cloudinary.com/practicaldev/image/fetch/s--0mTFi2YH--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1cle4tapitd1rzuiosd0.jpg" class="crayons-link mt-6 block">
+        <div class="flex items-center">
+          <span class="crayons-avatar crayons-avatar--xl m:crayons-avatar--2xl mr-4 shrink-0">
+              <img loading="lazy" alt="lalami profile image" class="crayons-avatar__image" width="100" height="100" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/1fd0af9f-3b2f-4b12-a59e-edca17c567b7.jpeg">
+          </span>
+          <div>
+            <h3 class="fs-xl mb-0 lh-tight">Best React.js Frontend Bootcamp 🧑‍💻</h3>
+            <p class="opacity-75 pt-1">
+              Salah Eddine Lalami - <time datetime="2023-10-06T00:34:37Z">Oct 6</time>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="https://dev.to/abdrzqsalihu/a-beginners-guide-to-object-relational-mapping-orm-in-programming-3700" data-preload-image="" class="crayons-link mt-6 block">
+        <div class="flex items-center">
+          <span class="crayons-avatar crayons-avatar--xl m:crayons-avatar--2xl mr-4 shrink-0">
+              <img loading="lazy" alt="abdrzqsalihu profile image" class="crayons-avatar__image" width="100" height="100" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/0ffdd2b9-c8eb-4f65-af03-359e1cfc4aea.jpg">
+          </span>
+          <div>
+            <h3 class="fs-xl mb-0 lh-tight">A Beginner's Guide to Object-Relational Mapping (ORM) in Programming</h3>
+            <p class="opacity-75 pt-1">
+              Abdulrazaq Salihu - <time datetime="2023-10-02T20:10:30Z">Oct 2</time>
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="https://dev.to/perssondennis/the-20-most-common-use-cases-for-javascript-arrays-2j8j" data-preload-image="https://res.cloudinary.com/practicaldev/image/fetch/s--JJwORXNJ--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jq9cvzwji5a98irbc8oi.png" class="crayons-link mt-6 block">
+        <div class="flex items-center">
+          <span class="crayons-avatar crayons-avatar--xl m:crayons-avatar--2xl mr-4 shrink-0">
+              <img loading="lazy" alt="perssondennis profile image" class="crayons-avatar__image" width="100" height="100" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/c7dc1bbd-b10f-49cc-8687-2216b81a4f45.png">
+          </span>
+          <div>
+            <h3 class="fs-xl mb-0 lh-tight">The 20 Most Common Use Cases for JavaScript Arrays</h3>
+            <p class="opacity-75 pt-1">
+              Dennis Persson - <time datetime="2023-10-22T14:07:28Z">Oct 22</time>
+            </p>
+          </div>
+        </div>
+      </a>
+  </section>
+
+    </div>
+  </main>
+
+  <aside class="crayons-layout__sidebar-right" aria-label="Author details">
+    <div class="crayons-article-sticky grid gap-4 pb-4 break-word" id="article-show-primary-sticky-nav">
+  <div class="crayons-card crayons-card--secondary branded-7 p-4 pt-0 gap-4 grid" style="border-top-color: #5a00e0;">
+    <div class="-mt-4">
+  <a href="https://dev.to/devarshishimpi" class="flex">
+    <span class="crayons-avatar crayons-avatar--xl  mr-2 shrink-0">
+      <img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/62065874-e2ea-4560-bdee-1cf038140c6f(1).png" class="crayons-avatar__image" alt="" loading="lazy">
+    </span>
+    <span class="crayons-link crayons-subtitle-2 mt-5">Devarshi Shimpi</span>
+  </a>
+</div>
+
+<div class="print-hidden">
+  <button name="button" type="button" data-info="{&quot;className&quot;:&quot;User&quot;,&quot;style&quot;:&quot;&quot;,&quot;id&quot;:838856,&quot;name&quot;:&quot;Devarshi Shimpi&quot;}" class="crayons-btn follow-action-button whitespace-nowrap w-100 follow-user showing" aria-label="Follow user: Devarshi Shimpi" aria-pressed="false" data-fetched="fetched" data-verb="unfollow">Follow</button>
+</div>
+  <div class="color-base-70">
+    Founder Of @Bytemakers 😎 || Full Stack Developer 🤓 || Building @RepoCraft 🚀|| Open Source 💪 || DevOps 🌩️ || UIUX Developer 📊 || Technical Writer 👨 || Friendly Moderator &amp; Trusted Member at DEV.
+  </div>
+
+  <div class="user-metadata-details">
+    <ul class="user-metadata-details-inner">
+        <li>
+          <div class="key">
+            Location
+          </div>
+          <div class="value">
+            Mumbai, India
+          </div>
+        </li>
+      <li>
+        <div class="key">
+          Joined
+        </div>
+        <div class="value">
+          <time datetime="2022-03-29T16:18:07Z" class="date">Mar 29, 2022</time>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  </div>
+
+      <div class="crayons-card crayons-card--secondary">
+        <header class="crayons-card__header">
+          <h3 class="crayons-subtitle-2">
+            More from <a href="https://dev.to/devarshishimpi">Devarshi Shimpi</a>
+          </h3>
+        </header>
+        <div>
+            <a class="crayons-link crayons-link--contentful" href="https://dev.to/devarshishimpi/creating-your-first-droplet-digitalocean-tutorials-b16">
+              Creating Your First Droplet - DigitalOcean Tutorials
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>beginners</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>tutorial</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>devops</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>digitalocean</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="https://dev.to/devarshishimpi/complete-markdown-tutorial-for-beginners-1e">
+              Complete Markdown Tutorial for Beginners
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>tutorial</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>webdev</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>markdown</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>beginners</span>
+              </div>
+            </a>
+            <a class="crayons-link crayons-link--contentful" href="https://dev.to/devarshishimpi/what-is-digitalocean-everything-you-need-to-know-39ph">
+              What is DigitalOcean? - Everything You Need to Know
+              <div class="crayons-link__secondary -ml-1">
+                  <span class="mr-1"><span class="opacity-50">#</span>cloud</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>tutorial</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>devops</span>
+                  <span class="mr-1"><span class="opacity-50">#</span>beginners</span>
+              </div>
+            </a>
+        </div>
+      </div>
+</div>
+
+<div class="crayons-article-sticky grid gap-4 break-word js-billboard-container" data-async-url="/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf/billboards/post_sidebar"><div>    <div class="crayons-card crayons-card--secondary crayons-sponsorship billboard js-billboard" data-display-unit="" data-id="41330" data-category-click="click" data-category-impression="impression" data-context-type="article" data-type-of="external" data-impression-recorded="true">
+    <div class="crayons-sponsorship__header relative">
+    <div class="flex">
+      <a href="https://dev.to/github" target="_blank" rel="noopener" class="flex">
+        <img width="24" height="24" class="radius-default crayons-sponsorship__image" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/3da37f64-b46e-4fa5-bf86-01b63ba5f57b.png" alt="profile" loading="lazy">
+        <div class="crayons-sponsorship__title ml-2 fs-s fw-medium">GitHub</div>
+      </a>
+        <span class="crayons-sponsorship__indicator c-indicator c-indicator--subtle c-indicator--round fs-2xs fw-medium ml-2 py-1 px-2">Promoted</span>
+    </div>
+
+  <button id="sponsorship-dropdown-trigger-41330" aria-controls="sponsorship-dropdown-41330" aria-expanded="false" aria-haspopup="true" class="dropBtn crayons-sponsorship__dropdown crayons-btn crayons-btn--s crayons-btn--ghost crayons-btn--icon" aria-label="Toggle dropdown menu" data-initialized="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="a1pporiez7l4s4z9ph0mk44p6koke9q3" class="crayons-icon pointer-events-none"><title id="a1pporiez7l4s4z9ph0mk44p6koke9q3">Dropdown menu</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+</svg>
+
+  </button>
+
+  <div id="sponsorship-dropdown-41330" class="crayons-dropdown sponsorship-dropdown right-0">
+    <ul class="list-none m-0">
+        <li>
+          <a class="crayons-link crayons-link--block" href="https://dev.to/billboards">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z"></path>
+</svg>
+
+            What's a billboard?
+          </a>
+        </li>
+      <li>
+        <a class="crayons-link crayons-link--block" href="https://dev.to/settings/customization#sponsors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M3.34 16.9999C2.91727 16.2689 2.58866 15.4874 2.362 14.6739C2.85531 14.423 3.26959 14.0406 3.55903 13.5688C3.84846 13.0971 4.00176 12.5545 4.00197 12.0011C4.00218 11.4476 3.84928 10.9049 3.5602 10.4329C3.27112 9.961 2.85712 9.57821 2.364 9.32694C2.81604 7.69243 3.67673 6.1999 4.865 4.98994C5.32909 5.29167 5.86762 5.45911 6.42098 5.47373C6.97434 5.48834 7.52095 5.34958 8.00033 5.07278C8.47971 4.79598 8.87315 4.39194 9.13713 3.90539C9.4011 3.41883 9.52531 2.86872 9.496 2.31594C11.1381 1.89157 12.8612 1.89226 14.503 2.31795C14.474 2.87071 14.5984 3.42073 14.8626 3.90715C15.1268 4.39357 15.5204 4.79742 15.9998 5.07401C16.4793 5.35059 17.0259 5.48913 17.5793 5.4743C18.1326 5.45946 18.671 5.29183 19.135 4.98994C19.714 5.57994 20.228 6.25095 20.66 6.99995C21.093 7.74895 21.417 8.52995 21.638 9.32595C21.1447 9.57685 20.7304 9.95932 20.441 10.4311C20.1515 10.9028 19.9982 11.4454 19.998 11.9988C19.9978 12.5523 20.1507 13.095 20.4398 13.5669C20.7289 14.0389 21.1429 14.4217 21.636 14.6729C21.184 16.3075 20.3233 17.8 19.135 19.0099C18.6709 18.7082 18.1324 18.5408 17.579 18.5262C17.0257 18.5115 16.479 18.6503 15.9997 18.9271C15.5203 19.2039 15.1268 19.6079 14.8629 20.0945C14.5989 20.5811 14.4747 21.1312 14.504 21.6839C12.8619 22.1083 11.1388 22.1076 9.497 21.6819C9.52605 21.1292 9.4016 20.5792 9.13742 20.0927C8.87324 19.6063 8.47964 19.2025 8.00017 18.9259C7.5207 18.6493 6.97405 18.5108 6.42073 18.5256C5.8674 18.5404 5.32896 18.7081 4.865 19.0099C4.27399 18.4069 3.76159 17.7315 3.34 16.9999ZM9 17.1959C10.0656 17.8106 10.8668 18.797 11.25 19.9659C11.749 20.0129 12.25 20.0139 12.749 19.9669C13.1324 18.7978 13.934 17.8114 15 17.1969C16.0652 16.5806 17.3205 16.3794 18.525 16.6319C18.815 16.2239 19.065 15.7889 19.273 15.3339C18.4524 14.4174 17.9991 13.2302 18 11.9999C18 10.7399 18.47 9.56295 19.273 8.66595C19.0635 8.21109 18.8125 7.77658 18.523 7.36795C17.3193 7.62025 16.0648 7.41942 15 6.80395C13.9344 6.18932 13.1332 5.20293 12.75 4.03394C12.251 3.98694 11.75 3.98594 11.251 4.03294C10.8676 5.20209 10.066 6.1885 9 6.80295C7.93478 7.41926 6.67948 7.62046 5.475 7.36795C5.18556 7.77623 4.93513 8.21081 4.727 8.66595C5.54757 9.5825 6.00088 10.7697 6 11.9999C6 13.2599 5.53 14.4369 4.727 15.3339C4.93647 15.7888 5.18754 16.2233 5.477 16.6319C6.68072 16.3796 7.93521 16.5805 9 17.1959ZM12 14.9999C11.2044 14.9999 10.4413 14.6839 9.87868 14.1213C9.31607 13.5587 9 12.7956 9 11.9999C9 11.2043 9.31607 10.4412 9.87868 9.87862C10.4413 9.31602 11.2044 8.99995 12 8.99995C12.7956 8.99995 13.5587 9.31602 14.1213 9.87862C14.6839 10.4412 15 11.2043 15 11.9999C15 12.7956 14.6839 13.5587 14.1213 14.1213C13.5587 14.6839 12.7956 14.9999 12 14.9999ZM12 12.9999C12.2652 12.9999 12.5196 12.8946 12.7071 12.7071C12.8946 12.5195 13 12.2652 13 11.9999C13 11.7347 12.8946 11.4804 12.7071 11.2928C12.5196 11.1053 12.2652 10.9999 12 10.9999C11.7348 10.9999 11.4804 11.1053 11.2929 11.2928C11.1054 11.4804 11 11.7347 11 11.9999C11 12.2652 11.1054 12.5195 11.2929 12.7071C11.4804 12.8946 11.7348 12.9999 12 12.9999Z" fill="black"></path>
+</svg>
+
+          Manage preferences
+        </a>
+      </li>
+      <hr>
+      <li>
+        <a class="crayons-link crayons-link--block" href="https://dev.to/report-abuse?billboard=41330">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-hidden="true" class="crayons-icon c-btn__icon">
+    <path d="M12.382 3a1 1 0 0 1 .894.553L14 5h6a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-6.382a1 1 0 0 1-.894-.553L12 16H5v6H3V3h9.382Zm-.618 2H5v9h8.236l1 2H19V7h-6.236l-1-2Z"></path>
+</svg>
+
+          Report billboard
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+    <div class="p-1 pt-3 text-styles text-styles--billboard">
+      <p><a href="https://githubuniverse.com/?utm_source=bannerad&amp;utm_medium=Dev-To&amp;utm_campaign=004-02"><img src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/GiNvyze.png" alt="GitHub Universe" width="1080" height="1080" loading="lazy"></a></p><h2>  <a name="join-us-at-github-universe" href="https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf#join-us-at-github-universe">  </a>  <a href="https://githubuniverse.com/?utm_source=bannerad&amp;utm_medium=Dev-To&amp;utm_campaign=004-02">Join us at GitHub Universe</a></h2><p>Take your coding skills to the next level with expert-driven sessions on AI, security, and DevEx.</p><p><a href="https://githubuniverse.com/?utm_source=bannerad&amp;utm_medium=Dev-To&amp;utm_campaign=004-02" class="ltag_cta ltag_cta--branded" role="button">Get free virtual tickets</a></p>
+    </div>
+  </div>
+
+</div></div>
+
+  </aside>
+</div>
+
+    <script>
+  if (document.getElementsByClassName('fluidvids').length === 0) {
+    window.Fluidvids=function(a,b){"use strict";var c,d,e=b.head||b.head,f=".fluidvids-elem{position:absolute;top:0px;left:0px;width:100%;height:100%;border:none;}.fluidvids{width:100%;position:relative;}",g=function(a){return c=new RegExp("^(https?:)?//(?:"+d.join("|")+").*$","i"),c.test(a)},h=function(a){var c=b.createElement("div"),d=a.parentNode,e=100*(parseInt(a.height?a.height:a.offsetHeight,10)/parseInt(a.width?a.width:a.offsetWidth,10));d.insertBefore(c,a),a.className+=" fluidvids-elem",c.className+=" fluidvids",c.style.paddingTop=e+"%",c.appendChild(a)},i=function(){var a=b.createElement("div");a.innerHTML="<p>x</p><style>"+f+"</style>",e.appendChild(a.childNodes[1])},j=function(a){var c=a||{},e=c.selector||"iframe";d=c.players||["www.youtube.com","player.vimeo.com","clips.twitch.tv"];for(var f=b.querySelectorAll(e),j=0;j<f.length;j++){var k=f[j];g(k.src)&&h(k)}i()};return{init:j}}(window,document);
+    Fluidvids.init({
+      selector: ['iframe', 'object'], // runs querySelectorAll()
+      players: ['www.youtube.com', 'player.vimeo.com', 'clips.twitch.tv'] // players to support
+    });
+  }
+</script>
+
+
+<div class="mod-actions-menu print-hidden">
+    <iframe id="mod-container" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/actions_panel.html" title="Moderation panel actions">
+    </iframe>
+  </div>
+<div data-testid="unpublish-post-modal-container" class="unpublish-post-modal-container hidden"></div>
+<div id="suspend-modal-content" class="hidden">
+  <p>
+    Once suspended, devarshishimpi will not be able to comment or publish posts until their suspension is removed.
+  </p>
+
+  <div class="crayons-field mt-4">
+    <label for="suspend-reason-userid-838856" class="crayons-field__label">
+      Note:
+    </label>
+    <textarea id="suspend-reason-userid-838856" rows="4" cols="70" placeholder="Reason for suspension" class="crayons-textfield" aria-describedby="suspension-reason-error" required=""></textarea>
+    <p id="suspension-reason-error" data-testid="suspension-reason-error" class="suspend-reason-error crayons-field__description" style="color: red;" aria-live="assertive">
+    </p>
+  </div>
+  <div class="mt-4">
+    <button id="submit-user-suspend-btn" class="c-btn c-btn--primary c-btn--destructive" data-btn-action="suspend" data-reason-selector="#suspend-reason-userid-838856" data-user-id="838856" data-username="devarshishimpi">
+      Submit &amp; Suspend
+    </button>
+  </div>
+</div>
+
+<div id="unsuspend-modal-content" class="hidden">
+  <p>
+    Once unsuspended, devarshishimpi will be able to comment and publish posts again.
+  </p>
+
+  <div class="crayons-field mt-4">
+    <label for="unsuspend-reason-userid-838856" class="crayons-field__label">
+      Note:
+    </label>
+    <textarea id="unsuspend-reason-userid-838856" rows="4" cols="70" placeholder="Reason for unsuspension" class="crayons-textfield" aria-describedby="unsuspension-reason-error" required=""></textarea>
+    <p id="unsuspension-reason-error" data-testid="unsuspension-reason-error" class="unsuspend-reason-error crayons-field__description" style="color: red;" aria-live="assertive">
+    </p>
+  </div>
+  <div class="mt-4">
+    <button id="submit-user-unsuspend-btn" class="c-btn c-btn--primary" data-btn-action="unsuspend" data-reason-selector="#unsuspend-reason-userid-838856" data-user-id="838856" data-username="devarshishimpi">
+      Submit &amp; Unsuspend
+    </button>
+  </div>
+</div>
+
+<div id="unpublish-all-posts" class="hidden">
+  <p>
+    Once unpublished, all posts by devarshishimpi will become hidden and only accessible to themselves.
+  </p>
+  <p class="mt-2">
+    If devarshishimpi is not suspended, they can still re-publish their posts from their dashboard.
+  </p>
+  <p class="mt-2"><label for="note_content">Note:</label><textarea name="note[content]" id="note_content" class="crayons-textfield note_content" placeholder="Note text"></textarea></p>
+  <div class="mt-4">
+    <button id="unpublish-all-posts-submit-btn" class="c-btn c-btn--destructive c-btn--primary" data-user-id="838856">
+      Unpublish all posts
+    </button>
+  </div>
+</div>
+
+<div id="unpublish-post-modal" class="hidden">
+  <p>
+    Once unpublished, this post will become invisible to the public and only accessible to Devarshi Shimpi.
+  </p>
+  <p>They can still re-publish the post if they are not suspended.</p>
+  <div class="mt-4">
+    <button destructive="" variant="primary" class="c-btn c-btn--primary c-btn--destructive" id="confirm-unpublish-post-action">
+      Unpublish Post
+    </button>
+  </div>
+</div>
+
+<div id="flag-user-modal-content" class="hidden">
+  <p>
+    Thanks for keeping DEV Community safe. Here is what you can do to flag devarshishimpi:
+  </p>
+
+  <div class="crayons-field crayons-field--radio mt-4">
+    <input type="radio" id="flag-user-radio-input" name="flag-user-radio-input" class="crayons-radio" data-reactable-id="838856" data-category="vomit" data-reactable-type="User">
+    <label for="flag-user-radio-input" class="crayons-field__label">
+      Make all posts by devarshishimpi less visible
+      <p class="crayons-field__description">
+        devarshishimpi consistently posts content that violates DEV Community's
+        code of conduct because it is harassing, offensive or spammy.
+      </p>
+    </label>
+  </div>
+
+  <div class="mt-4">
+    <a href="javascript:void(0);" id="report-inappropriate-content" data-report-abuse-link="/report-abuse?url=https://dev.to/devarshishimpi/how-to-install-and-set-up-a-ghost-blog-on-aws-lightsail-step-by-step-tutorial-48kf">
+      Report other inappropriate conduct
+    </a>
+  </div>
+
+  <div class="mt-6">
+    <p id="unselected-radio-error" data-testid="unselected-radio-error" class="crayons-field__description mb-4" style="color: red;" aria-live="assertive">
+    </p>
+    <button id="confirm-flag-user-action" class="c-btn c-btn--primary c-btn--destructive" data-category="vomit" data-reactable-type="User" data-user-id="838856" data-username="devarshishimpi">
+      Confirm Flag
+    </button>
+  </div>
+</div>
+
+<div id="unflag-user-modal-content" class="hidden">
+  <p>
+    Unflagging devarshishimpi will restore default visibility to their posts.
+  </p>
+
+  <div class="mt-6">
+    <button id="confirm-unflag-user-action" class="c-btn c-btn--primary" data-category="vomit" data-reactable-type="User" data-user-id="838856" data-username="devarshishimpi">
+      Confirm Unflag
+    </button>
+  </div>
+</div>
+
+
+<div class="fullscreen-code js-fullscreen-code"></div>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~followButtons-56fe944952e8bb38b6eb.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/5-4570d4bfbce73a76f0c4.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/followButtons-09ffcbdecdaeb5b0cb92.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~billboard-3831a809b3ffb1e69d79.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/billboard-9173bc5ef2bc2da7d686.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~localizeArticleDates-c8de004717960056e0d5.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/localizeArticleDates-e6a322e06ef008478070.chunk.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/runtime~articleReactions-b487e7b7895dc5460261.js.download" defer="defer"></script>
+<script src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/articleReactions-a5ae84e1fed22322fda4.chunk.js.download" defer="defer"></script>
+
+<script>
+  var waitingOnPodcast = setInterval(function() {
+  if (typeof initializePodcastPlayback !== 'undefined') {
+    initializePodcastPlayback();
+    clearInterval(waitingOnPodcast);
+  }
+}, 1);
+
+  if (document.head.querySelector('meta[name="user-signed-in"][content="true"]')) {
+  function displayPollResults(json) {
+    var totalVotes = json.voting_data.votes_count;
+    json.voting_data.votes_distribution.forEach(function(point) {
+      var pollOptionItem = document.getElementById('poll_option_list_item_'+point[0]);
+      var optionText = document.getElementById('poll_option_label_'+point[0]).textContent;
+      if (json.user_vote_poll_option_id === point[0]) {
+        var votedClass = 'optionvotedfor'
+      } else {
+        var votedClass = 'optionnotvotedfor'
+      }
+      if (totalVotes === 0) {
+        var percent = 0;
+      } else {
+        var percent = (point[1]/totalVotes)*100;
+      }
+      var roundedPercent = Math.round( percent * 10 ) / 10
+      var percentFromRight = (100-roundedPercent)
+      var html = '<span><span class="ltag-votepercent ltag-'+votedClass+'" style="right:'+percentFromRight+'%"></span>        <span class="ltag-votepercenttext">'+optionText+' — '+roundedPercent+'%</span></span>';
+      pollOptionItem.innerHTML = html;
+      pollOptionItem.classList.add('already-voted')
+      document.getElementById('showmethemoney-'+json.poll_id).innerHTML = '<span class="ltag-voting-results-count">'+totalVotes+' total votes</span>';
+    })
+  }
+
+  var polls = document.getElementsByClassName('ltag-poll');
+  for (var i = 0; i < polls.length; i += 1) {
+    var poll = polls[i]
+    var pollId = poll.dataset.pollId
+    window.fetch('/poll_votes/'+pollId)
+    .then(function(response){
+      response.json().then(
+        function(json) {
+          if (json.voted) {
+            displayPollResults(json)
+          } else {
+            var els = document.getElementById('poll_'+json.poll_id).getElementsByClassName('ltag-polloption');
+
+            for (i = 0; i < els.length; i += 1) {
+              els[i].addEventListener('click', function(e) {
+                var tokenMeta = document.querySelector("meta[name='csrf-token']")
+                if (!tokenMeta) {
+                  alert('Whoops. There was an error. Your vote was not counted. Try refreshing the page.')
+                  return
+                }
+                var csrfToken = tokenMeta.getAttribute('content')
+                var optionId = e.target.dataset.optionId
+                window.fetch('/poll_votes', {
+                  method: 'POST',
+                  headers: {
+                    'X-CSRF-Token': csrfToken,
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({poll_vote: { poll_option_id: optionId } }),
+                  credentials: 'same-origin',
+                }).then(function(response){
+                  response.json().then(function(j){displayPollResults(j)})
+                })
+              });
+            }
+
+            document.getElementById('showmethemoney-'+json.poll_id).addEventListener('click', function() {
+              pollId = this.dataset.pollId
+              window.fetch('/poll_skips', {
+                method: 'POST',
+                headers: {
+                  'X-CSRF-Token': csrfToken,
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({poll_skip: {poll_id: pollId }}),
+                credentials: 'same-origin',
+              }).then(function(response){
+                response.json().then(function(j){displayPollResults(j)})
+              })
+            });
+          }
+        }
+      )
+    })
+  }
+} else {
+    var els = document.getElementsByClassName('ltag-poll')
+    for (i = 0; i < els.length; i += 1) {
+      els[i].onclick = function(e) {
+        if (typeof showLoginModal !== "undefined") {
+          showLoginModal();
+        }
+      }
+    }
+}
+
+  function activateRunkitTags() {
+  if (!areAnyRunkitTagsPresent())
+    return
+
+  var checkRunkit = setInterval(function() {
+    try {
+      dynamicallyLoadRunkitLibrary()
+
+      if (typeof(RunKit) === 'undefined') {
+        return
+      }
+
+      replaceTagContentsWithRunkitWidget()
+      clearInterval(checkRunkit);
+    } catch(e) {
+      console.error(e);
+      clearInterval(checkRunkit);
+    }
+  }, 200);
+}
+
+function isRunkitTagAlreadyActive(runkitTag) {
+  return runkitTag.querySelector("iframe") !== null;
+};
+
+function areAnyRunkitTagsPresent() {
+  var presentRunkitTags = document.getElementsByClassName("runkit-element");
+
+  return presentRunkitTags.length > 0
+}
+
+function replaceTagContentsWithRunkitWidget() {
+  var targets = document.getElementsByClassName("runkit-element");
+  for (var i = 0; i < targets.length; i++) {
+    if (isRunkitTagAlreadyActive(targets[i])) {
+      continue;
+    }
+
+    var wrapperContent = targets[i].textContent;
+    if (/^(<iframe src)/.test(wrapperContent) === false) {
+      if (targets[i].children.length > 0) {
+        var preamble = targets[i].children[0].textContent;
+        var content = targets[i].children[1].textContent;
+        targets[i].innerHTML = "";
+        var notebook = RunKit.createNotebook({
+          element: targets[i],
+          source: content,
+          preamble: preamble
+        });
+      }
+    }
+  }
+};
+
+function dynamicallyLoadRunkitLibrary() {
+  if (typeof(dynamicallyLoadScript) === "undefined")
+    return
+
+  dynamicallyLoadScript("//embed.runkit.com")
+}
+
+activateRunkitTags();
+
+    // Listen for resize events and match them to the iframe
+  window.addEventListener('message', function(event) {
+    if (event.origin.startsWith('https://platform.twitter.com')) {
+        var iframes = document.getElementsByTagName('iframe');
+        for (var i = 0; i < iframes.length; i++) {
+          if (event.source === iframes[i].contentWindow) { // iframes which match the event
+            var iframe = iframes[i];
+            var data = event.data['twttr.embed'];
+            if (data && data['method'] === 'twttr.private.resize' && data['params'] && data['params']['0']) {
+              iframe.style.height = data['params']['0']['height'] + 0.5 + 'px';
+              iframe.style.minHeight = data['params']['0']['height'] + 0.5 + 'px';
+              iframe.style.width = data['params']['0']['width'] + 'px !important';
+            }
+            break;
+          }
+        }
+    }
+}, false);
+
+// Legacy support: We have shifted up how we render tweets, but still need to render
+// the old way for old embed. This could eventually be removed.
+var videoPreviews = document.getElementsByClassName("ltag__twitter-tweet__media__video-wrapper");
+[].forEach.call(videoPreviews, function(el) {
+  el.onclick = function(e) {
+    var divHeight = el.offsetHeight;
+    el.style.maxHeight = divHeight + "px";
+    el.getElementsByClassName("ltag__twitter-tweet__media--video-preview")[0].style.display = "none";
+    el.getElementsByClassName("ltag__twitter-tweet__video")[0].style.display = "block";
+    el.getElementsByTagName("video")[0].play();
+  }
+});
+var tweets = document.getElementsByClassName("ltag__twitter-tweet__main");
+[].forEach.call(tweets, function(tweet){
+  tweet.onclick = function(e) {
+    if (e.target.nodeName == "A" || e.target.parentElement.nodeName == "A") {
+      return;
+    }
+    window.open(tweet.dataset.url,"_blank");
+  }
+});
+
+</script>
+
+    
+  </div>
+</div>
+    
+<footer id="footer" class="crayons-footer print-hidden">
+  <div id="footer-container" class="crayons-footer__container">
+    <p class="fs-s crayons-footer__description">
+      <a class="c-link c-link--branded fw-medium" aria-label="DEV Community Home" href="https://dev.to/">DEV Community</a> — A constructive and inclusive social network for software developers. With you every step of your journey.
+    </p>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="">
+        <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/">
+      Home
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/pod">
+      Podcasts
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/videos">
+      Videos
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/tags">
+      Tags
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/faq">
+      FAQ
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/dev-advertising-options">
+      Advertise on DEV
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/about">
+      About
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/contact">
+      Contact
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/guides">
+      Guides
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/software-comparisons">
+      Software comparisons
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <ul class="footer__nav-links flex gap-2 justify-center flex-wrap fs-s p-0" style="">
+        <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/code-of-conduct">
+      Code of Conduct
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/privacy">
+      Privacy Policy
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+  <li class="footer__nav-link flex items-center">
+    <a href="https://dev.to/terms">
+      Terms of use
+    </a>
+    <span class="dot ml-2"></span>
+  </li>
+
+    </ul>
+
+    <div class="fs-s">
+      <p>Built on <a class="c-link c-link--branded" target="_blank" rel="noopener" href="https://www.forem.com/">Forem</a> — the <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/opensource">open source</a> software that powers <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/">DEV</a> and other inclusive communities.</p>
+      <p>Made with love and <a target="_blank" rel="noopener" class="c-link c-link--branded" href="https://dev.to/t/rails">Ruby on Rails</a>. DEV Community <span title="copyright">©</span> 2016 - 2023.</p>
+    </div>
+  </div>
+</footer>
+<div id="snack-zone"><div class="hidden"></div></div>
+
+    
+  <div id="i18n-translations" data-translations="{&quot;en&quot;:{&quot;core&quot;:{&quot;add_comment&quot;:&quot;Add comment&quot;,&quot;beta&quot;:&quot;beta&quot;,&quot;comment&quot;:&quot;Comment&quot;,&quot;copy_link&quot;:&quot;Copy link&quot;,&quot;edit_profile&quot;:&quot;Edit profile&quot;,&quot;follow&quot;:&quot;Follow&quot;,&quot;follow_back&quot;:&quot;Follow back&quot;,&quot;following&quot;:&quot;Following&quot;,&quot;like&quot;:&quot;Like&quot;,&quot;loading&quot;:&quot;loading...&quot;,&quot;reaction&quot;:&quot;Reaction&quot;,&quot;report_abuse&quot;:&quot;Report abuse&quot;,&quot;search&quot;:&quot;Search&quot;,&quot;success_settings&quot;:&quot;Successfully updated settings.&quot;,&quot;counted_organization&quot;:{&quot;one&quot;:&quot;%{count} organization&quot;,&quot;other&quot;:&quot;%{count} organizations&quot;},&quot;counted_user&quot;:{&quot;one&quot;:&quot;%{count} person&quot;,&quot;other&quot;:&quot;%{count} people&quot;},&quot;not_following&quot;:&quot;You&#39;re not following anyone&quot;,&quot;following_everyone&quot;:&quot;You&#39;re following %{details} (everyone)&quot;,&quot;you_are_following&quot;:&quot;You&#39;re following&quot;,&quot;and&quot;:&quot;and&quot;}}}"></div>
+  <div id="reaction-category-resources" class="hidden" aria-hidden="true">
+    <img data-name="Like" data-slug="like" data-position="1" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg" width="18" height="18">
+    <img data-name="Unicorn" data-slug="unicorn" data-position="2" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg" width="18" height="18">
+    <img data-name="Exploding Head" data-slug="exploding_head" data-position="3" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg" width="18" height="18">
+    <img data-name="Raised Hands" data-slug="raised_hands" data-position="4" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg" width="18" height="18">
+    <img data-name="Fire" data-slug="fire" data-position="5" src="./How to Install and Set Up a Ghost Blog on AWS Lightsail - Step by Step Tutorial - DEV Community_files/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg" width="18" height="18">
+</div>
+
+  
+  
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
